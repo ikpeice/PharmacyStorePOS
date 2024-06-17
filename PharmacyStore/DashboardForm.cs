@@ -34,5 +34,10 @@ namespace PharmacyStore
         {
             this.Text = "["+_username+"] -- Dashboard";
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
