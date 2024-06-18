@@ -11,13 +11,15 @@ using System.Windows.Forms;
 using Microsoft.Data.Sqlite;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using static PharmacyStore.GlobalData;
 
 namespace PharmacyStore
 {
     public partial class LogInForm : Form
     {
-        DBConnection DB = new DBConnection(new SqliteConnection("Data Source=hello.db"));
+        DBConnection DB = new DBConnection(new SqliteConnection("Data Source=StaffDB.db"));
         string _username;
+        private bool _adminPrivilege = false;
         public LogInForm()
         {
             InitializeComponent();
@@ -30,18 +32,46 @@ namespace PharmacyStore
             //DB.RegisterUser("ikpe", "onlyice");
             _username = textBox1.Text;
             string password = textBox2.Text;
-            if(DB.CheckPassword(_username, password))
+            switch (checkBox1.Checked)
             {
-                MessageBox.Show("Successful Login");
-                this.Visible = false;
-                Form dashboard = new DashboardForm(this,_username);
-                dashboard.Show();
-            }
-            else
-            {
-                MessageBox.Show("Login Failed");
+                case true:
+                    if (DB.CheckPassword(_username, password, true))
+                    {
+                        MessageBox.Show("Successful Login");
+                        _adminPrivilege = true;
+                        this.Visible = false;
+                        Form dashboard = new DashboardForm(this, _username, _adminPrivilege);
+                        dashboard.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Login Failed");
+                    }
+                    break;
+
+                case false:
+                    if (DB.CheckPassword(_username, password))
+                    {
+                        MessageBox.Show("Successful Login");
+                        this.Visible = false;
+                        Form dashboard = new DashboardForm(this, _username, _adminPrivilege);
+                        dashboard.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Login Failed");
+                    }
+                    break;
             }
 
+        }
+
+        private void OnVisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                _adminPrivilege = false;
+            }
         }
     }
 }

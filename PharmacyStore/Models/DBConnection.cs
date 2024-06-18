@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.Data.Sqlite;
-
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace PharmacyStore.Models
@@ -71,10 +71,10 @@ namespace PharmacyStore.Models
 
         }
 
-        public bool CheckPassword(string username, string password)
+        public bool CheckPassword(string username, string password, bool admin = false)
         {
             string sql = "SELECT * " +
-                    "FROM UserTable " +
+                    "FROM staff " +
                     "WHERE username = @username";
             bool result = false;
             try
@@ -91,10 +91,22 @@ namespace PharmacyStore.Models
                     {
 /*                        var id = reader.GetInt32(0);
                         var user = reader.GetString(1);*/
-                        var pass = reader.GetString(2);
-                        if (pass == password)
+                        var pass = reader.GetString(3);
+                        switch (admin)
                         {
-                            result = true;
+                            case true:
+                                string _admin = reader.GetString(4);
+                                if (_admin == "1" && pass == password)
+                                {
+                                    result = true;
+                                }
+                                break;
+                            case false:
+                                if (pass == password)
+                                {
+                                    result = true;
+                                }
+                                break;
                         }
                     }
                 }
@@ -106,5 +118,36 @@ namespace PharmacyStore.Models
             return result;
         }
 
+        public List<string> LoadItem(string itemCode)
+        {
+            string sql = "SELECT * From product WHERE Code = @Code";
+            List<string> result = new List<string>();
+            try
+            {
+                this.conn.Open();
+                SqliteCommand command = new SqliteCommand(sql, conn);
+                command.Parameters.AddWithValue("Code", itemCode);
+                command.ExecuteNonQuery();
+                var reader = command.ExecuteReader();
+                
+                if (reader.HasRows)
+                {
+                    int i = 1; // start from Item code
+                    while (reader.Read())
+                    {
+                        string item = reader.GetString(i);
+                        result.Add(item);
+                        i++;
+                    }
+                    reader.Close();
+                    
+                }
+                conn.Close();
+            }
+            catch(SqliteException ex) {
+                MessageBox.Show(ex.ToString());
+            }
+            return result;
+        } 
     }
 }

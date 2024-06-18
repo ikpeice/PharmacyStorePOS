@@ -31,17 +31,17 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.logOut_Button = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.sales_button = new System.Windows.Forms.Button();
+            this.order_button = new System.Windows.Forms.Button();
+            this.report_button = new System.Windows.Forms.Button();
+            this.addItem_button = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.employe_button = new System.Windows.Forms.Button();
+            this.stock_button = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -60,6 +60,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(823, 83);
             this.panel1.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(381, 33);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 20);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "--/--/--  --:--:--";
             // 
             // logOut_Button
             // 
@@ -99,58 +111,60 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "InDrugs";
             // 
-            // button1
+            // sales_button
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.Location = new System.Drawing.Point(85, 74);
-            this.button1.MaximumSize = new System.Drawing.Size(80, 80);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 80);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "SALES";
-            this.button1.UseVisualStyleBackColor = false;
+            this.sales_button.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.sales_button.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.sales_button.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.sales_button.FlatAppearance.BorderSize = 0;
+            this.sales_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.sales_button.Location = new System.Drawing.Point(85, 74);
+            this.sales_button.MaximumSize = new System.Drawing.Size(80, 80);
+            this.sales_button.Name = "sales_button";
+            this.sales_button.Size = new System.Drawing.Size(80, 80);
+            this.sales_button.TabIndex = 1;
+            this.sales_button.Text = "SALES";
+            this.sales_button.UseVisualStyleBackColor = false;
+            this.sales_button.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // order_button
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.Location = new System.Drawing.Point(199, 74);
-            this.button2.MaximumSize = new System.Drawing.Size(80, 80);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(80, 80);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "ORDER";
-            this.button2.UseCompatibleTextRendering = true;
-            this.button2.UseVisualStyleBackColor = false;
+            this.order_button.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.order_button.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.order_button.FlatAppearance.BorderSize = 0;
+            this.order_button.Location = new System.Drawing.Point(199, 74);
+            this.order_button.MaximumSize = new System.Drawing.Size(80, 80);
+            this.order_button.Name = "order_button";
+            this.order_button.Size = new System.Drawing.Size(80, 80);
+            this.order_button.TabIndex = 2;
+            this.order_button.Text = "ORDER";
+            this.order_button.UseCompatibleTextRendering = true;
+            this.order_button.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // report_button
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button3.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.button3.Location = new System.Drawing.Point(85, 188);
-            this.button3.MaximumSize = new System.Drawing.Size(80, 80);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(80, 80);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "REPORT";
-            this.button3.UseVisualStyleBackColor = false;
+            this.report_button.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.report_button.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.report_button.FlatAppearance.BorderSize = 0;
+            this.report_button.Location = new System.Drawing.Point(85, 188);
+            this.report_button.MaximumSize = new System.Drawing.Size(80, 80);
+            this.report_button.Name = "report_button";
+            this.report_button.Size = new System.Drawing.Size(80, 80);
+            this.report_button.TabIndex = 3;
+            this.report_button.Text = "REPORT";
+            this.report_button.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // addItem_button
             // 
-            this.button4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button4.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.button4.Location = new System.Drawing.Point(199, 188);
-            this.button4.MaximumSize = new System.Drawing.Size(80, 80);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(80, 80);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "STORE";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.addItem_button.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.addItem_button.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.addItem_button.FlatAppearance.BorderSize = 0;
+            this.addItem_button.Location = new System.Drawing.Point(199, 188);
+            this.addItem_button.Name = "addItem_button";
+            this.addItem_button.Size = new System.Drawing.Size(75, 80);
+            this.addItem_button.TabIndex = 7;
+            this.addItem_button.Text = "ADD ITEM";
+            this.addItem_button.UseVisualStyleBackColor = false;
             // 
             // panel2
             // 
@@ -158,52 +172,42 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.Controls.Add(this.button6);
-            this.panel2.Controls.Add(this.button5);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button3);
+            this.panel2.Controls.Add(this.employe_button);
+            this.panel2.Controls.Add(this.stock_button);
+            this.panel2.Controls.Add(this.sales_button);
+            this.panel2.Controls.Add(this.addItem_button);
+            this.panel2.Controls.Add(this.order_button);
+            this.panel2.Controls.Add(this.report_button);
             this.panel2.Location = new System.Drawing.Point(186, 89);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(478, 363);
             this.panel2.TabIndex = 5;
             // 
-            // button6
+            // employe_button
             // 
-            this.button6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button6.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.button6.Location = new System.Drawing.Point(312, 188);
-            this.button6.MaximumSize = new System.Drawing.Size(80, 80);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(80, 80);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "STORE";
-            this.button6.UseVisualStyleBackColor = false;
+            this.employe_button.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.employe_button.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.employe_button.FlatAppearance.BorderSize = 0;
+            this.employe_button.Location = new System.Drawing.Point(312, 188);
+            this.employe_button.MaximumSize = new System.Drawing.Size(80, 80);
+            this.employe_button.Name = "employe_button";
+            this.employe_button.Size = new System.Drawing.Size(80, 80);
+            this.employe_button.TabIndex = 6;
+            this.employe_button.Text = "EMPLOYEE";
+            this.employe_button.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // stock_button
             // 
-            this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button5.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.button5.Location = new System.Drawing.Point(312, 74);
-            this.button5.MaximumSize = new System.Drawing.Size(80, 80);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(80, 80);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "STORE";
-            this.button5.UseVisualStyleBackColor = false;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(381, 33);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 20);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "--/--/--  --:--:--";
+            this.stock_button.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.stock_button.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.stock_button.FlatAppearance.BorderSize = 0;
+            this.stock_button.Location = new System.Drawing.Point(312, 74);
+            this.stock_button.MaximumSize = new System.Drawing.Size(80, 80);
+            this.stock_button.Name = "stock_button";
+            this.stock_button.Size = new System.Drawing.Size(80, 80);
+            this.stock_button.TabIndex = 5;
+            this.stock_button.Text = "STOCK";
+            this.stock_button.UseVisualStyleBackColor = false;
             // 
             // timer1
             // 
@@ -241,13 +245,13 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button sales_button;
+        private System.Windows.Forms.Button order_button;
+        private System.Windows.Forms.Button report_button;
+        private System.Windows.Forms.Button addItem_button;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button stock_button;
+        private System.Windows.Forms.Button employe_button;
         private System.Windows.Forms.Button logOut_Button;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer timer1;

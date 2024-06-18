@@ -15,11 +15,13 @@ namespace PharmacyStore
     {
         Form prev;
         string _username;
-        public DashboardForm(Form _prev, string user)
+        private bool _adminPrivilege;// = &false;
+        public DashboardForm(Form _prev, string user,bool adminPrivilege)
         {
             InitializeComponent();
             prev = _prev;
             _username = user;
+            _adminPrivilege = adminPrivilege;
         }
          ~DashboardForm()
         {
@@ -29,6 +31,7 @@ namespace PharmacyStore
         private void OnFormClosed(object sender, FormClosedEventArgs e)
         {
             prev.Visible = true;
+            _adminPrivilege = false;
         }
 
         private void OnLoad(object sender, EventArgs e)
@@ -36,6 +39,19 @@ namespace PharmacyStore
             this.Text = "["+_username+"] -- Dashboard";
             DateTime dt = DateTime.Now;
             label2.Text = dt.ToString();
+            
+            if (_adminPrivilege)
+            {
+                addItem_button.Enabled = true;
+                report_button.Enabled = true;
+                employe_button.Enabled = true;
+            }
+            else
+            {
+                addItem_button.Enabled = false;
+                report_button.Enabled = false;
+                employe_button.Enabled = false;
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -54,5 +70,11 @@ namespace PharmacyStore
             DateTime dt = DateTime.Now;
             label2.Text = dt.ToString();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

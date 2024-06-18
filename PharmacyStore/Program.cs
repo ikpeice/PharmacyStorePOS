@@ -6,11 +6,13 @@ using System.Windows.Forms;
 
 namespace PharmacyStore
 {
+    
     internal static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        
         [STAThread]
         static void Main()
         {
