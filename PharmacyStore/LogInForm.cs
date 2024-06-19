@@ -11,13 +11,13 @@ using System.Windows.Forms;
 using Microsoft.Data.Sqlite;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using static PharmacyStore.GlobalData;
+
 
 namespace PharmacyStore
 {
     public partial class LogInForm : Form
     {
-        DBConnection DB = new DBConnection(new SqliteConnection("Data Source=StaffDB.db"));
+        DBConnection staffDB = new DBConnection(new SqliteConnection("Data Source=StaffDB.db"));
         string _username;
         private bool _adminPrivilege = false;
         public LogInForm()
@@ -35,7 +35,7 @@ namespace PharmacyStore
             switch (checkBox1.Checked)
             {
                 case true:
-                    if (DB.CheckPassword(_username, password, true))
+                    if (staffDB.CheckPassword(_username, password, true))
                     {
                         MessageBox.Show("Successful Login");
                         _adminPrivilege = true;
@@ -50,7 +50,7 @@ namespace PharmacyStore
                     break;
 
                 case false:
-                    if (DB.CheckPassword(_username, password))
+                    if (staffDB.CheckPassword(_username, password))
                     {
                         MessageBox.Show("Successful Login");
                         this.Visible = false;

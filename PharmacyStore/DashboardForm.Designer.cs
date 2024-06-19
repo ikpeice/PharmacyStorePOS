@@ -163,7 +163,7 @@
             this.addItem_button.Name = "addItem_button";
             this.addItem_button.Size = new System.Drawing.Size(75, 80);
             this.addItem_button.TabIndex = 7;
-            this.addItem_button.Text = "ADD ITEM";
+            this.addItem_button.Text = "ANALYTICS";
             this.addItem_button.UseVisualStyleBackColor = false;
             // 
             // panel2
@@ -208,6 +208,7 @@
             this.stock_button.TabIndex = 5;
             this.stock_button.Text = "STOCK";
             this.stock_button.UseVisualStyleBackColor = false;
+            this.stock_button.Click += new System.EventHandler(this.stock_button_Click);
             // 
             // timer1
             // 

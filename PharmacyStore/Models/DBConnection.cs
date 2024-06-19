@@ -11,9 +11,9 @@ namespace PharmacyStore.Models
         ~DBConnection() {
         
         }
-        public DBConnection(SqliteConnection conn) 
+        public DBConnection(SqliteConnection _conn) 
         {
-            this.conn = conn;
+            this.conn = _conn;
         }
         public void Connect()
         {
@@ -121,7 +121,7 @@ namespace PharmacyStore.Models
         public List<string> LoadItem(string itemCode)
         {
             string sql = "SELECT * From product WHERE Code = @Code";
-            List<string> result = new List<string>();
+            List<string> rowItem = new List<string>();
             try
             {
                 this.conn.Open();
@@ -136,7 +136,7 @@ namespace PharmacyStore.Models
                     while (reader.Read())
                     {
                         string item = reader.GetString(i);
-                        result.Add(item);
+                        rowItem.Add(item);
                         i++;
                     }
                     reader.Close();
@@ -147,7 +147,56 @@ namespace PharmacyStore.Models
             catch(SqliteException ex) {
                 MessageBox.Show(ex.ToString());
             }
-            return result;
+            return rowItem;
         } 
+        
+        public void LoadStock(DataGridView dataGridView, bool privilege)
+        {
+            string sql = "SELECT * FROM product";
+            try
+            {
+                this.conn.Open();
+                SqliteCommand command = new SqliteCommand(@sql, conn);
+                command.ExecuteNonQuery();
+                var reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        if (privilege)
+                        {
+                            dataGridView.Rows.Add(new object[] {
+                            reader.GetString(reader.GetOrdinal("Code")),
+                            reader.GetString(reader.GetOrdinal("Description")),
+                            reader.GetString(reader.GetOrdinal("Category")),
+                            reader.GetString(reader.GetOrdinal("Quantity")),
+                            reader.GetString(reader.GetOrdinal("Cost Price")),
+                            reader.GetString(reader.GetOrdinal("Selling Price")),
+                            reader.GetString(reader.GetOrdinal("Company"))
+                            });
+                        }
+                        else
+                        {
+                            dataGridView.Rows.Add(new object[] {
+                            reader.GetString(reader.GetOrdinal("Code")),
+                            reader.GetString(reader.GetOrdinal("Description")),
+                            reader.GetString(reader.GetOrdinal("Category")),
+                            reader.GetString(reader.GetOrdinal("Quantity")),
+                            /*reader.GetString(reader.GetOrdinal("Cost Price")),*/
+                            reader.GetString(reader.GetOrdinal("Selling Price")),
+                            reader.GetString(reader.GetOrdinal("Company"))
+                        });
+                        }
+
+                    }
+                }
+                this.conn.Close();
+            }
+            catch (SqliteException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
     }
 }
