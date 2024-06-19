@@ -58,7 +58,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(823, 83);
+            this.panel1.Size = new System.Drawing.Size(833, 83);
             this.panel1.TabIndex = 0;
             // 
             // label2
@@ -67,7 +67,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(381, 33);
+            this.label2.Location = new System.Drawing.Point(386, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 20);
             this.label2.TabIndex = 5;
@@ -82,7 +82,7 @@
             this.logOut_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logOut_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logOut_Button.ForeColor = System.Drawing.SystemColors.Control;
-            this.logOut_Button.Location = new System.Drawing.Point(657, 21);
+            this.logOut_Button.Location = new System.Drawing.Point(667, 21);
             this.logOut_Button.Name = "logOut_Button";
             this.logOut_Button.Size = new System.Drawing.Size(137, 47);
             this.logOut_Button.TabIndex = 4;
@@ -118,7 +118,7 @@
             this.sales_button.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.sales_button.FlatAppearance.BorderSize = 0;
             this.sales_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.sales_button.Location = new System.Drawing.Point(85, 74);
+            this.sales_button.Location = new System.Drawing.Point(90, 74);
             this.sales_button.MaximumSize = new System.Drawing.Size(80, 80);
             this.sales_button.Name = "sales_button";
             this.sales_button.Size = new System.Drawing.Size(80, 80);
@@ -132,7 +132,7 @@
             this.order_button.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.order_button.BackColor = System.Drawing.Color.CornflowerBlue;
             this.order_button.FlatAppearance.BorderSize = 0;
-            this.order_button.Location = new System.Drawing.Point(199, 74);
+            this.order_button.Location = new System.Drawing.Point(204, 74);
             this.order_button.MaximumSize = new System.Drawing.Size(80, 80);
             this.order_button.Name = "order_button";
             this.order_button.Size = new System.Drawing.Size(80, 80);
@@ -146,7 +146,7 @@
             this.report_button.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.report_button.BackColor = System.Drawing.Color.CornflowerBlue;
             this.report_button.FlatAppearance.BorderSize = 0;
-            this.report_button.Location = new System.Drawing.Point(85, 188);
+            this.report_button.Location = new System.Drawing.Point(90, 188);
             this.report_button.MaximumSize = new System.Drawing.Size(80, 80);
             this.report_button.Name = "report_button";
             this.report_button.Size = new System.Drawing.Size(80, 80);
@@ -159,7 +159,7 @@
             this.addItem_button.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.addItem_button.BackColor = System.Drawing.Color.CornflowerBlue;
             this.addItem_button.FlatAppearance.BorderSize = 0;
-            this.addItem_button.Location = new System.Drawing.Point(199, 188);
+            this.addItem_button.Location = new System.Drawing.Point(204, 188);
             this.addItem_button.Name = "addItem_button";
             this.addItem_button.Size = new System.Drawing.Size(75, 80);
             this.addItem_button.TabIndex = 7;
@@ -180,7 +180,7 @@
             this.panel2.Controls.Add(this.report_button);
             this.panel2.Location = new System.Drawing.Point(186, 89);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(478, 363);
+            this.panel2.Size = new System.Drawing.Size(488, 363);
             this.panel2.TabIndex = 5;
             // 
             // employe_button
@@ -188,7 +188,7 @@
             this.employe_button.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.employe_button.BackColor = System.Drawing.Color.CornflowerBlue;
             this.employe_button.FlatAppearance.BorderSize = 0;
-            this.employe_button.Location = new System.Drawing.Point(312, 188);
+            this.employe_button.Location = new System.Drawing.Point(317, 188);
             this.employe_button.MaximumSize = new System.Drawing.Size(80, 80);
             this.employe_button.Name = "employe_button";
             this.employe_button.Size = new System.Drawing.Size(80, 80);
@@ -201,7 +201,7 @@
             this.stock_button.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.stock_button.BackColor = System.Drawing.Color.CornflowerBlue;
             this.stock_button.FlatAppearance.BorderSize = 0;
-            this.stock_button.Location = new System.Drawing.Point(312, 74);
+            this.stock_button.Location = new System.Drawing.Point(317, 74);
             this.stock_button.MaximumSize = new System.Drawing.Size(80, 80);
             this.stock_button.Name = "stock_button";
             this.stock_button.Size = new System.Drawing.Size(80, 80);
@@ -223,7 +223,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = global::PharmacyStore.Properties.Resources.pexels_pixelcop_3970396;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(823, 455);
+            this.ClientSize = new System.Drawing.Size(833, 455);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
