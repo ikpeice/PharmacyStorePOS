@@ -1,5 +1,4 @@
 ﻿using Microsoft.Data.Sqlite;
-using PharmacyStore.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,28 +8,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PharmacyStore.Models;
 
 namespace PharmacyStore
 {
-    public partial class AddItemForm : Form
+    public partial class UpdateItemForm : Form
     {
+        List<string> itemData;
         DBConnection productDB = new DBConnection(new SqliteConnection("Data Source=ProductDB.db"));
         DataGridView _dataGridView;
         Label _label;
-        public AddItemForm(DataGridView dataGridView, Label label)
+        public UpdateItemForm(List<string> ItemData)
         {
             InitializeComponent();
-            _dataGridView = dataGridView;
-            _label = label;
+            this.itemData = ItemData;
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void addItem_button_Click(object sender, EventArgs e)
+        private void Update_button_Click(object sender, EventArgs e)
         {
             List<string> list = new List<string>();
             list.Add(textBox1.Text);
@@ -45,10 +39,10 @@ namespace PharmacyStore
             productDB.AddItem(list);
             int count = productDB.LoadStock(_dataGridView, true);
             _dataGridView.Refresh();
-            _label.Text = "Total Item Count : "+count.ToString();
+            _label.Text = "Total Item Count : " + count.ToString();
         }
 
-        private void AddItemForm_Load(object sender, EventArgs e)
+        private void UpdateItemForm_Load(object sender, EventArgs e)
         {
             List<string> cat = new List<string>();
             List<string> comp = new List<string>();
@@ -57,18 +51,27 @@ namespace PharmacyStore
             string prev = "";
             foreach (string item in cat)
             {
-                if(prev != item)comboBox1.Items.Add(item);
+                if (prev != item) 
+                    comboBox1.Items.Add(item);
                 prev = item;
             }
             prev = "";
             foreach (string item in comp)
             {
-                if (prev != item) comboBox2.Items.Add(item);
+                if (prev != item) 
+                    comboBox2.Items.Add(item);
                 prev = item;
             }
+
+            textBox1.Text = itemData[0];
+            richTextBox1.Text = itemData[1];
+            numericUpDown1.Value = int.Parse(itemData[3]);
+            textBox2.Text = itemData[4];
+            textBox3.Text = itemData[5];
+
         }
 
-        private void Done_button_Click(object sender, EventArgs e)
+        private void Cancel_button_Click(object sender, EventArgs e)
         {
             this.Close();
         }

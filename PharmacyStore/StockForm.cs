@@ -39,8 +39,6 @@ namespace PharmacyStore
                 int count = productDB.LoadStock(dataGridView1,_privilege);
                 label4.Text = "Total Item Count = "+count.ToString();
             }
-
-
             else
             {
                 dataGridView1.Enabled = false;
@@ -49,7 +47,26 @@ namespace PharmacyStore
                 int count = productDB.LoadStock(dataGridView2,_privilege);
                 label4.Text = "Total Item Count = " + count.ToString();
             }
-                
+
+            List<string> cat;// = new List<string>();
+            List<string> comp;// = new List<string>();
+            cat = productDB.GetColoumnItems("Category");
+            comp = productDB.GetColoumnItems("Company");
+            string prev = "";
+            foreach (string item in cat)
+            {
+                if (prev != item)
+                    comboBox1.Items.Add(item);
+                prev = item;
+            }
+            prev = "";
+            foreach (string item in comp)
+            {
+                if (prev != item)
+                    comboBox2.Items.Add(item);
+                prev = item;
+            }
+
         }
 
         private void dataGridView1_CellValuePushed(object sender, DataGridViewCellValueEventArgs e)
@@ -60,12 +77,11 @@ namespace PharmacyStore
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             MessageBox.Show("data changed at "+e.RowIndex.ToString()+","+e.ColumnIndex.ToString());
-            
         }
 
         private void addNewItem_button_Click(object sender, EventArgs e)
         {
-            Form form = new AddItemForm(dataGridView2,label4);
+            Form form = new AddItemForm(dataGridView1,label4);
             form.ShowDialog();
         }
 
@@ -74,13 +90,29 @@ namespace PharmacyStore
             for(int j = 0; j < dataGridView1.SelectedRows.Count; j++)
             {
                 DataGridViewRow row = dataGridView1.SelectedRows[j];
-                for (int i = 0; i < row.Cells.Count; i++)
-                {
-                    MessageBox.Show(row.Cells[i].Value.ToString());
-                }
+                
+                productDB.DeleteItem(row.Index);
+                int count = productDB.LoadStock(dataGridView1, _privilege);
+                label4.Text = "Total Item Count = " + count.ToString();
             }
 
             
+        }
+
+        private void Update_button_Click(object sender, EventArgs e)
+        {
+            List<string> list = new List<string>();
+
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                DataGridViewRow row = dataGridView1.SelectedRows [0];
+                for(int i=0;i< row.Cells.Count;i++)
+                {
+                    list.Add(row.Cells [i].Value.ToString());
+                }
+                Form updateForm = new UpdateItemForm(list);
+                updateForm.ShowDialog();
+            }
         }
     }
 }

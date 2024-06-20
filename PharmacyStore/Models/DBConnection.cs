@@ -258,6 +258,48 @@ namespace PharmacyStore.Models
             return items;
         }
 
+        public void DeleteItem(int rowIndex)
+        {
+            string sql = "DELETE FROM product WHERE id = @id_";
+            try
+            {
+                conn.Open();
+                SqliteCommand command = new SqliteCommand(sql, conn);
+                command.Parameters.AddWithValue("id_", rowIndex);
+                command.ExecuteNonQuery();
+                MessageBox.Show("Deleted successfully");
+                conn.Close();
+            }
+            catch (SqliteException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public void UpdateItem(int rowIndex, List<string> data)
+        {
+            string sql = "UPDATE product " +
+                "SET Code = @code, " +
+                "Description = @des, " +
+                "Category = @cat, " +
+                "Quantity = @qty, " +
+                "CostPrice = @cost, " +
+                "SellingPrice = @sell, " +
+                "Company = @comp, " +
+                "ExpirationDate = @exp" +
+                "WHERE id = @_id";
+            SqliteCommand command = new SqliteCommand(@sql, conn);
+            command.Parameters.AddWithValue("_id", rowIndex);
+            command.Parameters.AddWithValue("code", data[0]);
+            command.Parameters.AddWithValue("dec", data[1]);
+            command.Parameters.AddWithValue("cat", data[2]);
+            command.Parameters.AddWithValue("qty", data[3]);
+            command.Parameters.AddWithValue("cost", data[4]);
+            command.Parameters.AddWithValue("sell", data[5]);
+            command.Parameters.AddWithValue("comp", data[6]);
+            command.Parameters.AddWithValue("exp", data[7]);
+            command.ExecuteNonQuery();
+        }
     
     }
 }
