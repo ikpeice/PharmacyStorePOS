@@ -37,7 +37,7 @@ namespace PharmacyStore
                 case true:
                     if (staffDB.CheckPassword(_username, password, true))
                     {
-                        MessageBox.Show("Successful Login");
+                        //MessageBox.Show("Successful Login");
                         _adminPrivilege = true;
                         this.Visible = false;
                         Form dashboard = new DashboardForm(this, _username, _adminPrivilege);
@@ -45,21 +45,21 @@ namespace PharmacyStore
                     }
                     else
                     {
-                        MessageBox.Show("Login Failed");
+                        MessageBox.Show("Login Failed! Try again");
                     }
                     break;
 
                 case false:
                     if (staffDB.CheckPassword(_username, password))
                     {
-                        MessageBox.Show("Successful Login");
+                        //MessageBox.Show("Successful Login");
                         this.Visible = false;
                         Form dashboard = new DashboardForm(this, _username, _adminPrivilege);
                         dashboard.Show();
                     }
                     else
                     {
-                        MessageBox.Show("Login Failed");
+                        MessageBox.Show("Login Failed! Try again");
                     }
                     break;
             }

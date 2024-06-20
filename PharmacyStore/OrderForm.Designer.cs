@@ -73,7 +73,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(660, 70);
+            this.panel1.Size = new System.Drawing.Size(984, 70);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -83,7 +83,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.Controls.Add(this.pictureBox1);
             this.panel4.Controls.Add(this.textBox5);
-            this.panel4.Location = new System.Drawing.Point(365, 40);
+            this.panel4.Location = new System.Drawing.Point(689, 40);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(295, 27);
             this.panel4.TabIndex = 0;
@@ -113,9 +113,9 @@
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 246);
+            this.panel2.Location = new System.Drawing.Point(0, 439);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(660, 166);
+            this.panel2.Size = new System.Drawing.Size(984, 166);
             this.panel2.TabIndex = 1;
             // 
             // panel5
@@ -192,7 +192,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.Control;
-            this.label7.Location = new System.Drawing.Point(208, 68);
+            this.label7.Location = new System.Drawing.Point(532, 68);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(127, 15);
             this.label7.TabIndex = 6;
@@ -204,7 +204,7 @@
             this.button3.BackColor = System.Drawing.Color.CornflowerBlue;
             this.button3.BackgroundImage = global::PharmacyStore.Properties.Resources.shopping;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.Location = new System.Drawing.Point(236, 5);
+            this.button3.Location = new System.Drawing.Point(560, 5);
             this.button3.MaximumSize = new System.Drawing.Size(60, 60);
             this.button3.MinimumSize = new System.Drawing.Size(60, 60);
             this.button3.Name = "button3";
@@ -224,7 +224,7 @@
             this.panel3.Controls.Add(this.textBox3);
             this.panel3.Controls.Add(this.textBox2);
             this.panel3.Controls.Add(this.textBox1);
-            this.panel3.Location = new System.Drawing.Point(341, 0);
+            this.panel3.Location = new System.Drawing.Point(665, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(319, 166);
             this.panel3.TabIndex = 0;
@@ -354,7 +354,7 @@
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dataGridView1.Location = new System.Drawing.Point(0, 76);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(660, 164);
+            this.dataGridView1.Size = new System.Drawing.Size(984, 357);
             this.dataGridView1.TabIndex = 3;
             // 
             // ItemCode
@@ -393,7 +393,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(660, 412);
+            this.ClientSize = new System.Drawing.Size(984, 605);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

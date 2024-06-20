@@ -40,11 +40,8 @@ namespace PharmacyStore
             list.Add(textBox2.Text);
             list.Add(textBox3.Text);
             list.Add(comboBox2.Items[comboBox2.SelectedIndex].ToString());
-            list.Add(dateTimePicker1.Text);
-            foreach (string item in list)
-            {
-                MessageBox.Show(item);
-            }
+            list.Add(dateTimePicker1.Value.ToShortDateString());
+
             productDB.AddItem(list);
             int count = productDB.LoadStock(_dataGridView, true);
             _label.Text = count.ToString();
@@ -68,6 +65,11 @@ namespace PharmacyStore
                 if (prev != item) comboBox2.Items.Add(item);
                 prev = item;
             }
+        }
+
+        private void Done_button_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

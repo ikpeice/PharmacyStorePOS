@@ -154,6 +154,7 @@ namespace PharmacyStore.Models
         {
             int count = 0;
             string sql = "SELECT * FROM product";
+            dataGridView.Rows.Clear();
             try
             {
                 this.conn.Open();
@@ -172,10 +173,10 @@ namespace PharmacyStore.Models
                             reader.GetString(reader.GetOrdinal("Description")),
                             reader.GetString(reader.GetOrdinal("Category")),
                             reader.GetString(reader.GetOrdinal("Quantity")),
-                            reader.GetString(reader.GetOrdinal("Cost Price")),
-                            reader.GetString(reader.GetOrdinal("Selling Price")),
+                            reader.GetString(reader.GetOrdinal("CostPrice")),
+                            reader.GetString(reader.GetOrdinal("SellingPrice")),
                             reader.GetString(reader.GetOrdinal("Company")),
-                            reader.GetString(reader.GetOrdinal("Expiration Date"))
+                            reader.GetString(reader.GetOrdinal("ExpirationDate"))
                             });
                         }
                         else
@@ -186,9 +187,9 @@ namespace PharmacyStore.Models
                             reader.GetString(reader.GetOrdinal("Category")),
                             reader.GetString(reader.GetOrdinal("Quantity")),
                             /*reader.GetString(reader.GetOrdinal("Cost Price")),*/
-                            reader.GetString(reader.GetOrdinal("Selling Price")),
+                            reader.GetString(reader.GetOrdinal("SellingPrice")),
                             reader.GetString(reader.GetOrdinal("Company")),
-                            reader.GetString(reader.GetOrdinal("Expiration Date"))
+                            reader.GetString(reader.GetOrdinal("ExpirationDate"))
                         });
                         }
 
@@ -205,21 +206,21 @@ namespace PharmacyStore.Models
     
         public void AddItem(List<string> row)
         {
-            string sql = "INSERT INTO product (Code, Description, Category, Quantity, Cost Price, Selling Price, Company, Expiration Date) " +
-                        "VALUES ("+ row[0]+", "+ row[1]+", "+ row[2]+", "+ row[3]+", "+ row[4]+", "+ row[5]+", "+ row[6]+", "+ row[7]+")";
-            //"VALUES (@Code, @Description, @Category, @Quantity, @Cost Price, @Selling Price, @Company, @Expiration Date)";
+            string sql = "INSERT INTO product (Code, Description, Category, Quantity, CostPrice, SellingPrice, Company, ExpirationDate) " +
+                        //"VALUES ("+ row[0]+", "+ row[1]+", "+ row[2]+", "+ row[3]+", "+ row[4]+", "+ row[5]+", "+ row[6]+", "+ row[7]+")";
+                        "VALUES (@Code, @Description, @Category, @Quantity, @CostPrice, @SellingPrice, @Company, @ExpirationDate)";
             try
             {
                 this.conn.Open();
                 var command = new SqliteCommand(sql, conn);
-/*                command.Parameters.AddWithValue("Code", row[0]);
+                command.Parameters.AddWithValue("Code", row[0]);
                 command.Parameters.AddWithValue("Description", row[1]);
                 command.Parameters.AddWithValue("Category", row[2]);
                 command.Parameters.AddWithValue("Quantity", row[3]);
-                command.Parameters.AddWithValue("Cost Price", row[4]);
-                command.Parameters.AddWithValue("Selling Price", row[5]);
+                command.Parameters.AddWithValue("CostPrice", row[4]);
+                command.Parameters.AddWithValue("SellingPrice", row[5]);
                 command.Parameters.AddWithValue("Company", row[6]);
-                command.Parameters.AddWithValue("Expiration Date", row[7]);*/
+                command.Parameters.AddWithValue("ExpirationDate", row[7]);
                 command.ExecuteNonQuery();
                 conn.Close();
                 MessageBox.Show("Inserted successfully");

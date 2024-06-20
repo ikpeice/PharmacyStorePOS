@@ -44,11 +44,12 @@
             this.label7 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.addItem_button = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Done_button = new System.Windows.Forms.Button();
+            this.addItem_button = new System.Windows.Forms.Button();
+            this.Scanner_checkBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -172,8 +173,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.label8);
@@ -191,44 +191,60 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 42);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(333, 313);
+            this.groupBox1.Size = new System.Drawing.Size(333, 307);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Details";
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(102, 277);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(205, 20);
+            this.dateTimePicker1.TabIndex = 15;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(19, 281);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(79, 13);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Expiration Date";
+            // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.Done_button);
             this.groupBox2.Controls.Add(this.addItem_button);
-            this.groupBox2.Location = new System.Drawing.Point(12, 331);
+            this.groupBox2.Location = new System.Drawing.Point(12, 353);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(333, 104);
+            this.groupBox2.Size = new System.Drawing.Size(333, 72);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Submit";
             // 
-            // button2
+            // Done_button
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.Done_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button2.FlatAppearance.BorderSize = 3;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orchid;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(223, 19);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(104, 79);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "DONE";
-            this.button2.UseVisualStyleBackColor = false;
+            this.Done_button.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.Done_button.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Done_button.FlatAppearance.BorderSize = 3;
+            this.Done_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.Done_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orchid;
+            this.Done_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Done_button.ForeColor = System.Drawing.Color.Black;
+            this.Done_button.Location = new System.Drawing.Point(223, 19);
+            this.Done_button.Name = "Done_button";
+            this.Done_button.Size = new System.Drawing.Size(104, 47);
+            this.Done_button.TabIndex = 1;
+            this.Done_button.Text = "DONE";
+            this.Done_button.UseVisualStyleBackColor = false;
+            this.Done_button.Click += new System.EventHandler(this.Done_button_Click);
             // 
             // addItem_button
             // 
@@ -243,27 +259,21 @@
             this.addItem_button.ForeColor = System.Drawing.Color.Black;
             this.addItem_button.Location = new System.Drawing.Point(6, 19);
             this.addItem_button.Name = "addItem_button";
-            this.addItem_button.Size = new System.Drawing.Size(104, 79);
+            this.addItem_button.Size = new System.Drawing.Size(104, 47);
             this.addItem_button.TabIndex = 0;
             this.addItem_button.Text = "ADD";
             this.addItem_button.UseVisualStyleBackColor = false;
             this.addItem_button.Click += new System.EventHandler(this.addItem_button_Click);
             // 
-            // label8
+            // Scanner_checkBox
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(19, 281);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(79, 13);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "Expiration Date";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(102, 277);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(205, 20);
-            this.dateTimePicker1.TabIndex = 15;
+            this.Scanner_checkBox.AutoSize = true;
+            this.Scanner_checkBox.Location = new System.Drawing.Point(12, 19);
+            this.Scanner_checkBox.Name = "Scanner_checkBox";
+            this.Scanner_checkBox.Size = new System.Drawing.Size(102, 17);
+            this.Scanner_checkBox.TabIndex = 16;
+            this.Scanner_checkBox.Text = "Enable Scanner";
+            this.Scanner_checkBox.UseVisualStyleBackColor = true;
             // 
             // AddItemForm
             // 
@@ -271,10 +281,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(353, 437);
+            this.Controls.Add(this.Scanner_checkBox);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(369, 476);
             this.MinimumSize = new System.Drawing.Size(369, 476);
             this.Name = "AddItemForm";
             this.Text = "AddItemForm";
@@ -284,6 +294,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -306,8 +317,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button addItem_button;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button Done_button;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox Scanner_checkBox;
     }
 }

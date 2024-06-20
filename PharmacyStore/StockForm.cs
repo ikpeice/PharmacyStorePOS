@@ -68,5 +68,19 @@ namespace PharmacyStore
             Form form = new AddItemForm(dataGridView2,label4);
             form.ShowDialog();
         }
+
+        private void Delete_button_Click(object sender, EventArgs e)
+        {
+            for(int j = 0; j < dataGridView1.SelectedRows.Count; j++)
+            {
+                DataGridViewRow row = dataGridView1.SelectedRows[j];
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    MessageBox.Show(row.Cells[i].Value.ToString());
+                }
+            }
+
+            
+        }
     }
 }
