@@ -43,6 +43,7 @@
             this.employe_button = new System.Windows.Forms.Button();
             this.stock_button = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -51,6 +52,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.logOut_Button);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -118,10 +120,11 @@
             this.sales_button.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.sales_button.FlatAppearance.BorderSize = 0;
             this.sales_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.sales_button.Location = new System.Drawing.Point(90, 74);
-            this.sales_button.MaximumSize = new System.Drawing.Size(80, 80);
+            this.sales_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sales_button.Location = new System.Drawing.Point(88, 46);
+            this.sales_button.MaximumSize = new System.Drawing.Size(90, 90);
             this.sales_button.Name = "sales_button";
-            this.sales_button.Size = new System.Drawing.Size(80, 80);
+            this.sales_button.Size = new System.Drawing.Size(90, 90);
             this.sales_button.TabIndex = 1;
             this.sales_button.Text = "SALES";
             this.sales_button.UseVisualStyleBackColor = false;
@@ -132,10 +135,11 @@
             this.order_button.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.order_button.BackColor = System.Drawing.Color.CornflowerBlue;
             this.order_button.FlatAppearance.BorderSize = 0;
-            this.order_button.Location = new System.Drawing.Point(204, 74);
-            this.order_button.MaximumSize = new System.Drawing.Size(80, 80);
+            this.order_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.order_button.Location = new System.Drawing.Point(202, 46);
+            this.order_button.MaximumSize = new System.Drawing.Size(90, 90);
             this.order_button.Name = "order_button";
-            this.order_button.Size = new System.Drawing.Size(80, 80);
+            this.order_button.Size = new System.Drawing.Size(90, 90);
             this.order_button.TabIndex = 2;
             this.order_button.Text = "ORDER";
             this.order_button.UseCompatibleTextRendering = true;
@@ -146,10 +150,11 @@
             this.report_button.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.report_button.BackColor = System.Drawing.Color.CornflowerBlue;
             this.report_button.FlatAppearance.BorderSize = 0;
-            this.report_button.Location = new System.Drawing.Point(90, 188);
-            this.report_button.MaximumSize = new System.Drawing.Size(80, 80);
+            this.report_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.report_button.Location = new System.Drawing.Point(88, 160);
+            this.report_button.MaximumSize = new System.Drawing.Size(90, 90);
             this.report_button.Name = "report_button";
-            this.report_button.Size = new System.Drawing.Size(80, 80);
+            this.report_button.Size = new System.Drawing.Size(90, 90);
             this.report_button.TabIndex = 3;
             this.report_button.Text = "REPORT";
             this.report_button.UseVisualStyleBackColor = false;
@@ -159,9 +164,11 @@
             this.addItem_button.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.addItem_button.BackColor = System.Drawing.Color.CornflowerBlue;
             this.addItem_button.FlatAppearance.BorderSize = 0;
-            this.addItem_button.Location = new System.Drawing.Point(204, 188);
+            this.addItem_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addItem_button.Location = new System.Drawing.Point(202, 160);
+            this.addItem_button.MaximumSize = new System.Drawing.Size(90, 90);
             this.addItem_button.Name = "addItem_button";
-            this.addItem_button.Size = new System.Drawing.Size(75, 80);
+            this.addItem_button.Size = new System.Drawing.Size(90, 90);
             this.addItem_button.TabIndex = 7;
             this.addItem_button.Text = "ANALYTICS";
             this.addItem_button.UseVisualStyleBackColor = false;
@@ -188,12 +195,13 @@
             this.employe_button.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.employe_button.BackColor = System.Drawing.Color.CornflowerBlue;
             this.employe_button.FlatAppearance.BorderSize = 0;
-            this.employe_button.Location = new System.Drawing.Point(317, 188);
-            this.employe_button.MaximumSize = new System.Drawing.Size(80, 80);
+            this.employe_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.employe_button.Location = new System.Drawing.Point(315, 160);
+            this.employe_button.MaximumSize = new System.Drawing.Size(90, 90);
             this.employe_button.Name = "employe_button";
-            this.employe_button.Size = new System.Drawing.Size(80, 80);
+            this.employe_button.Size = new System.Drawing.Size(90, 90);
             this.employe_button.TabIndex = 6;
-            this.employe_button.Text = "EMPLOYEE";
+            this.employe_button.Text = "STAFF";
             this.employe_button.UseVisualStyleBackColor = false;
             // 
             // stock_button
@@ -201,10 +209,11 @@
             this.stock_button.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.stock_button.BackColor = System.Drawing.Color.CornflowerBlue;
             this.stock_button.FlatAppearance.BorderSize = 0;
-            this.stock_button.Location = new System.Drawing.Point(317, 74);
-            this.stock_button.MaximumSize = new System.Drawing.Size(80, 80);
+            this.stock_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stock_button.Location = new System.Drawing.Point(315, 46);
+            this.stock_button.MaximumSize = new System.Drawing.Size(90, 90);
             this.stock_button.Name = "stock_button";
-            this.stock_button.Size = new System.Drawing.Size(80, 80);
+            this.stock_button.Size = new System.Drawing.Size(90, 90);
             this.stock_button.TabIndex = 5;
             this.stock_button.Text = "STOCK";
             this.stock_button.UseVisualStyleBackColor = false;
@@ -215,6 +224,16 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.OnTimer_Tick);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(131, 58);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(106, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Pharmacitical Limited";
             // 
             // DashboardForm
             // 
@@ -256,5 +275,6 @@
         private System.Windows.Forms.Button logOut_Button;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label3;
     }
 }

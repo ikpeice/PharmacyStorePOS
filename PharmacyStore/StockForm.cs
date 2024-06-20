@@ -35,8 +35,9 @@ namespace PharmacyStore
             {
                 dataGridView1.Enabled = true;
                 dataGridView2.Enabled = false;
-                productDB.LoadStock(dataGridView1,_privilege);
-                
+                groupBox1.Enabled = true;
+                int count = productDB.LoadStock(dataGridView1,_privilege);
+                label4.Text = "Total Item Count = "+count.ToString();
             }
 
 
@@ -44,8 +45,9 @@ namespace PharmacyStore
             {
                 dataGridView1.Enabled = false;
                 dataGridView2.Enabled = true;
-                productDB.LoadStock(dataGridView2,_privilege);
-
+                groupBox1.Enabled = false;
+                int count = productDB.LoadStock(dataGridView2,_privilege);
+                label4.Text = "Total Item Count = " + count.ToString();
             }
                 
         }
@@ -59,6 +61,12 @@ namespace PharmacyStore
         {
             MessageBox.Show("data changed at "+e.RowIndex.ToString()+","+e.ColumnIndex.ToString());
             
+        }
+
+        private void addNewItem_button_Click(object sender, EventArgs e)
+        {
+            Form form = new AddItemForm(dataGridView2,label4);
+            form.ShowDialog();
         }
     }
 }

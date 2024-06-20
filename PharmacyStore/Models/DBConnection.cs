@@ -150,8 +150,9 @@ namespace PharmacyStore.Models
             return rowItem;
         } 
         
-        public void LoadStock(DataGridView dataGridView, bool privilege)
+        public int LoadStock(DataGridView dataGridView, bool privilege)
         {
+            int count = 0;
             string sql = "SELECT * FROM product";
             try
             {
@@ -163,6 +164,7 @@ namespace PharmacyStore.Models
                 {
                     while (reader.Read())
                     {
+                        count++;
                         if (privilege)
                         {
                             dataGridView.Rows.Add(new object[] {
@@ -172,7 +174,8 @@ namespace PharmacyStore.Models
                             reader.GetString(reader.GetOrdinal("Quantity")),
                             reader.GetString(reader.GetOrdinal("Cost Price")),
                             reader.GetString(reader.GetOrdinal("Selling Price")),
-                            reader.GetString(reader.GetOrdinal("Company"))
+                            reader.GetString(reader.GetOrdinal("Company")),
+                            reader.GetString(reader.GetOrdinal("Expiration Date"))
                             });
                         }
                         else
@@ -184,7 +187,8 @@ namespace PharmacyStore.Models
                             reader.GetString(reader.GetOrdinal("Quantity")),
                             /*reader.GetString(reader.GetOrdinal("Cost Price")),*/
                             reader.GetString(reader.GetOrdinal("Selling Price")),
-                            reader.GetString(reader.GetOrdinal("Company"))
+                            reader.GetString(reader.GetOrdinal("Company")),
+                            reader.GetString(reader.GetOrdinal("Expiration Date"))
                         });
                         }
 
@@ -196,7 +200,63 @@ namespace PharmacyStore.Models
             {
                 MessageBox.Show(ex.ToString());
             }
-
+            return count;
         }
+    
+        public void AddItem(List<string> row)
+        {
+            string sql = "INSERT INTO product (Code, Description, Category, Quantity, Cost Price, Selling Price, Company, Expiration Date) " +
+                        "VALUES ("+ row[0]+", "+ row[1]+", "+ row[2]+", "+ row[3]+", "+ row[4]+", "+ row[5]+", "+ row[6]+", "+ row[7]+")";
+            //"VALUES (@Code, @Description, @Category, @Quantity, @Cost Price, @Selling Price, @Company, @Expiration Date)";
+            try
+            {
+                this.conn.Open();
+                var command = new SqliteCommand(sql, conn);
+/*                command.Parameters.AddWithValue("Code", row[0]);
+                command.Parameters.AddWithValue("Description", row[1]);
+                command.Parameters.AddWithValue("Category", row[2]);
+                command.Parameters.AddWithValue("Quantity", row[3]);
+                command.Parameters.AddWithValue("Cost Price", row[4]);
+                command.Parameters.AddWithValue("Selling Price", row[5]);
+                command.Parameters.AddWithValue("Company", row[6]);
+                command.Parameters.AddWithValue("Expiration Date", row[7]);*/
+                command.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Inserted successfully");
+            }
+            catch (SqliteException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public List<string> GetColoumnItems(string coloumnHeader)
+        {
+            List<string> items = new List<string>();
+            string sql = "SELECT "+coloumnHeader+" FROM product";
+            try
+            {
+                this.conn.Open();
+                SqliteCommand command = new SqliteCommand(sql, conn);
+                //command.Parameters.AddWithValue("coln", coloumnHeader);
+                command.ExecuteNonQuery();
+                var reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        items.Add(reader.GetString(0));
+                    }
+                }
+                this.conn.Close();
+            }
+            catch (SqliteException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return items;
+        }
+
+    
     }
 }
