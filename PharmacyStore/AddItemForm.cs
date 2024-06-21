@@ -50,21 +50,23 @@ namespace PharmacyStore
 
         private void AddItemForm_Load(object sender, EventArgs e)
         {
-            List<string> cat = new List<string>();
-            List<string> comp = new List<string>();
+            List<string> cat;
+            List<string> comp;
             cat = productDB.GetColoumnItems("Category");
             comp = productDB.GetColoumnItems("Company");
-            string prev = "";
+            comboBox1.Items.Clear();
             foreach (string item in cat)
             {
-                if(prev != item)comboBox1.Items.Add(item);
-                prev = item;
+                if (!comboBox1.Items.Contains(item))
+                {
+                    comboBox1.Items.Add(item);
+                }
             }
-            prev = "";
+            comboBox2.Items.Clear();
             foreach (string item in comp)
             {
-                if (prev != item) comboBox2.Items.Add(item);
-                prev = item;
+                if (!comboBox2.Items.Contains(item)) 
+                    comboBox2.Items.Add(item);
             }
         }
 

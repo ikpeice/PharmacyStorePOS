@@ -17,13 +17,14 @@ namespace PharmacyStore
 {
     public partial class LogInForm : Form
     {
-        DBConnection staffDB = new DBConnection(new SqliteConnection("Data Source=StaffDB.db"));
+        DBConnection staffDB = new DBConnection(new SqliteConnection("Data Source=ProductDB.db;Version=3"));
         string _username;
         private bool _adminPrivilege = false;
         public LogInForm()
         {
             InitializeComponent();
             //DB.CreateUserTable();
+            
         }
 
         private void LogInButton_Click(object sender, EventArgs e)

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PharmacyStore.Models;
+using System.Reflection.Emit;
 
 namespace PharmacyStore
 {
@@ -36,6 +37,7 @@ namespace PharmacyStore
                 dataGridView1.Enabled = true;
                 dataGridView2.Enabled = false;
                 groupBox1.Enabled = true;
+                tabControl1.SelectTab(1);
                 int count = productDB.LoadStock(dataGridView1,_privilege);
                 label4.Text = "Total Item Count = "+count.ToString();
             }
@@ -48,23 +50,21 @@ namespace PharmacyStore
                 label4.Text = "Total Item Count = " + count.ToString();
             }
 
-            List<string> cat;// = new List<string>();
-            List<string> comp;// = new List<string>();
+            List<string> cat;
+            List<string> comp;
             cat = productDB.GetColoumnItems("Category");
             comp = productDB.GetColoumnItems("Company");
-            string prev = "";
+            comboBox1.Items.Clear();
             foreach (string item in cat)
             {
-                if (prev != item)
+                if (!comboBox1.Items.Contains(item))
                     comboBox1.Items.Add(item);
-                prev = item;
             }
-            prev = "";
+            comboBox2.Items.Clear();
             foreach (string item in comp)
             {
-                if (prev != item)
+                if (!comboBox2.Items.Contains(item))
                     comboBox2.Items.Add(item);
-                prev = item;
             }
 
         }
@@ -93,7 +93,7 @@ namespace PharmacyStore
                 
                 productDB.DeleteItem(row.Index);
                 int count = productDB.LoadStock(dataGridView1, _privilege);
-                label4.Text = "Total Item Count = " + count.ToString();
+                label4.Text = "Total Item Count : " + count.ToString();
             }
 
             
@@ -102,9 +102,10 @@ namespace PharmacyStore
         private void Update_button_Click(object sender, EventArgs e)
         {
             List<string> list = new List<string>();
-
+            int rowIndex;
             if (dataGridView1.SelectedRows.Count == 1)
             {
+                rowIndex = dataGridView1.SelectedRows[0].Index;
                 DataGridViewRow row = dataGridView1.SelectedRows [0];
                 for(int i=0;i< row.Cells.Count;i++)
                 {
@@ -112,6 +113,8 @@ namespace PharmacyStore
                 }
                 Form updateForm = new UpdateItemForm(list);
                 updateForm.ShowDialog();
+                int count = productDB.LoadStock(dataGridView1, true);
+                label4.Text = "Total Item Count : " + count.ToString();
             }
         }
     }

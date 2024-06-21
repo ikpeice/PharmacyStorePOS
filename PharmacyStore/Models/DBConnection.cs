@@ -19,7 +19,6 @@ namespace PharmacyStore.Models
         {
             try
             {
-               /* this.conn = new SqliteConnection("Data Source=hello.db");*/
                 this.conn.Open();
                 MessageBox.Show("Connection successful");
                 conn.Close();
@@ -276,29 +275,52 @@ namespace PharmacyStore.Models
             }
         }
 
-        public void UpdateItem(int rowIndex, List<string> data)
+        public void UpdateItem(List<string> data)
         {
             string sql = "UPDATE product " +
-                "SET Code = @code, " +
-                "Description = @des, " +
-                "Category = @cat, " +
-                "Quantity = @qty, " +
-                "CostPrice = @cost, " +
-                "SellingPrice = @sell, " +
-                "Company = @comp, " +
-                "ExpirationDate = @exp" +
-                "WHERE id = @_id";
-            SqliteCommand command = new SqliteCommand(@sql, conn);
-            command.Parameters.AddWithValue("_id", rowIndex);
-            command.Parameters.AddWithValue("code", data[0]);
-            command.Parameters.AddWithValue("dec", data[1]);
-            command.Parameters.AddWithValue("cat", data[2]);
-            command.Parameters.AddWithValue("qty", data[3]);
-            command.Parameters.AddWithValue("cost", data[4]);
-            command.Parameters.AddWithValue("sell", data[5]);
-            command.Parameters.AddWithValue("comp", data[6]);
-            command.Parameters.AddWithValue("exp", data[7]);
-            command.ExecuteNonQuery();
+                "SET Description = @Description, " +
+                "Category = @Category, " +
+                "Quantity = @Quantity, " +
+                "CostPrice = @CostPrice, " +
+                "SellingPrice = @SellingPrice, " +
+                "Company = @Company, " +
+                "ExpirationDate = @ExpirationDate " +
+                "WHERE Code = @Code";
+            /*            string sql = "UPDATE product SET Code = "+data[0]+", "+
+                            "Description = "+data[1]+", "+
+                            "Category = " + data[2] + ", "+
+                            "Quantity = " + data[3] + ", " +
+                            "CostPrice = " + data[4] + ", " +
+                            "SellingPrice = " + data[5] + ", " +
+                            "Company = '" + data[6] + "', " +
+                            "ExpirationDate = '" + data[7] + "', " +
+                            "WHERE id = " + rowIndex.ToString();*/
+            try
+            {
+                conn.Open();
+                SqliteCommand command = new SqliteCommand(sql, conn);
+
+                command.Parameters.AddWithValue("Code", data[0]);
+                command.Parameters.AddWithValue("Description", data[1]);
+                command.Parameters.AddWithValue("Category", data[2]);
+                command.Parameters.AddWithValue("Quantity", data[3]);
+                command.Parameters.AddWithValue("CostPrice", data[4]);
+                command.Parameters.AddWithValue("SellingPrice", data[5]);
+                command.Parameters.AddWithValue("Company", data[6]);
+                command.Parameters.AddWithValue("ExpirationDate", data[7]);
+                command.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Updated Successfully","From DB",
+                    MessageBoxButtons.OKCancel
+                    );
+            }
+            catch(SqliteException ex) {
+                DialogResult result = MessageBox.Show(ex.ToString(), "From DB",MessageBoxButtons.OKCancel);
+                if (result == DialogResult.Cancel)
+                {
+                    MessageBox.Show("You just Canceled me");
+                }
+            }
         }
     
     }

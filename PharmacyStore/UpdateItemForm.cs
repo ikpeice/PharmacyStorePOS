@@ -16,12 +16,11 @@ namespace PharmacyStore
     {
         List<string> itemData;
         DBConnection productDB = new DBConnection(new SqliteConnection("Data Source=ProductDB.db"));
-        DataGridView _dataGridView;
-        Label _label;
         public UpdateItemForm(List<string> ItemData)
         {
             InitializeComponent();
             this.itemData = ItemData;
+           
         }
 
         private void Update_button_Click(object sender, EventArgs e)
@@ -36,44 +35,42 @@ namespace PharmacyStore
             list.Add(comboBox2.Items[comboBox2.SelectedIndex].ToString());
             list.Add(dateTimePicker1.Value.ToShortDateString());
 
-            productDB.AddItem(list);
-            int count = productDB.LoadStock(_dataGridView, true);
-            _dataGridView.Refresh();
-            _label.Text = "Total Item Count : " + count.ToString();
+            productDB.UpdateItem(list);
+            this.Close();
         }
 
         private void UpdateItemForm_Load(object sender, EventArgs e)
         {
-            List<string> cat = new List<string>();
-            List<string> comp = new List<string>();
+            List<string> cat;
+            List<string> comp;
             cat = productDB.GetColoumnItems("Category");
             comp = productDB.GetColoumnItems("Company");
-            string prev = "";
+            comboBox1.Items.Clear();
             foreach (string item in cat)
             {
-                if (prev != item) 
+                if (!comboBox1.Items.Contains(item))
                     comboBox1.Items.Add(item);
-                prev = item;
             }
-            prev = "";
+            comboBox2.Items.Clear();
             foreach (string item in comp)
             {
-                if (prev != item) 
+                if (!comboBox2.Items.Contains(item))
                     comboBox2.Items.Add(item);
-                prev = item;
             }
 
             textBox1.Text = itemData[0];
             richTextBox1.Text = itemData[1];
+            comboBox1.SelectedItem = itemData[2];
             numericUpDown1.Value = int.Parse(itemData[3]);
             textBox2.Text = itemData[4];
             textBox3.Text = itemData[5];
-
+            comboBox2.SelectedItem = itemData[6];
+            
         }
 
         private void Cancel_button_Click(object sender, EventArgs e)
         {
-            this.Close();
+            
         }
     }
 }

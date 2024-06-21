@@ -79,6 +79,12 @@ namespace PharmacyStore
         private void stock_button_Click(object sender, EventArgs e)
         {
             Form form = new StockForm(_username, _adminPrivilege);
+            form.ShowDialog();
+        }
+
+        private void order_button_Click(object sender, EventArgs e)
+        {
+            Form form = new OrderForm();
             form.Show();
         }
     }
