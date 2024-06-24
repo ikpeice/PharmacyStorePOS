@@ -286,15 +286,6 @@ namespace PharmacyStore.Models
                 "Company = @Company, " +
                 "ExpirationDate = @ExpirationDate " +
                 "WHERE Code = @Code";
-            /*            string sql = "UPDATE product SET Code = "+data[0]+", "+
-                            "Description = "+data[1]+", "+
-                            "Category = " + data[2] + ", "+
-                            "Quantity = " + data[3] + ", " +
-                            "CostPrice = " + data[4] + ", " +
-                            "SellingPrice = " + data[5] + ", " +
-                            "Company = '" + data[6] + "', " +
-                            "ExpirationDate = '" + data[7] + "', " +
-                            "WHERE id = " + rowIndex.ToString();*/
             try
             {
                 conn.Open();
@@ -322,6 +313,64 @@ namespace PharmacyStore.Models
                 }
             }
         }
-    
+
+        public int Search(string item, string category, string company, DataGridView dataGridView, bool privilege)
+        {
+            int count = 0;
+            string sql = "SELECT * FROM product WHERE Description like @Description OR " +
+                "Category like @Category OR Company like @Company";
+            dataGridView.Rows.Clear();
+            try
+            {
+                this.conn.Open();
+                SqliteCommand command = new SqliteCommand(@sql, conn);
+                command.Parameters.AddWithValue("Description", item);
+                command.Parameters.AddWithValue("Category", category);
+                command.Parameters.AddWithValue("Company", company);
+                command.ExecuteNonQuery();
+                var reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        count++;
+                        if (privilege)
+                        {
+                            dataGridView.Rows.Add(new object[] {
+                            reader.GetString(reader.GetOrdinal("Code")),
+                            reader.GetString(reader.GetOrdinal("Description")),
+                            reader.GetString(reader.GetOrdinal("Category")),
+                            reader.GetString(reader.GetOrdinal("Quantity")),
+                            reader.GetString(reader.GetOrdinal("CostPrice")),
+                            reader.GetString(reader.GetOrdinal("SellingPrice")),
+                            reader.GetString(reader.GetOrdinal("Company")),
+                            reader.GetString(reader.GetOrdinal("ExpirationDate"))
+                            });
+                        }
+                        else
+                        {
+                            dataGridView.Rows.Add(new object[] {
+                            reader.GetString(reader.GetOrdinal("Code")),
+                            reader.GetString(reader.GetOrdinal("Description")),
+                            reader.GetString(reader.GetOrdinal("Category")),
+                            reader.GetString(reader.GetOrdinal("Quantity")),
+                            /*reader.GetString(reader.GetOrdinal("Cost Price")),*/
+                            reader.GetString(reader.GetOrdinal("SellingPrice")),
+                            reader.GetString(reader.GetOrdinal("Company")),
+                            reader.GetString(reader.GetOrdinal("ExpirationDate"))
+                        });
+                        }
+
+                    }
+                }
+                this.conn.Close();
+            }
+            catch (SqliteException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return count;
+        }
+
     }
 }

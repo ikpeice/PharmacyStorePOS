@@ -17,7 +17,7 @@ namespace PharmacyStore
 {
     public partial class LogInForm : Form
     {
-        DBConnection staffDB = new DBConnection(new SqliteConnection("Data Source=ProductDB.db;Version=3"));
+        DBConnection staffDB = new DBConnection(new SqliteConnection("Data Source=ProductDB.db"));
         string _username;
         private bool _adminPrivilege = false;
         public LogInForm()

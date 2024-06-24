@@ -33,7 +33,7 @@ namespace PharmacyStore
             list.Add(textBox2.Text);
             list.Add(textBox3.Text);
             list.Add(comboBox2.Items[comboBox2.SelectedIndex].ToString());
-            list.Add(dateTimePicker1.Value.ToShortDateString());
+            list.Add(dateTimePicker1.Value.GetDateTimeFormats()[5]);
 
             productDB.UpdateItem(list);
             this.Close();

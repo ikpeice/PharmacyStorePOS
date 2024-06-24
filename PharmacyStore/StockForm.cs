@@ -10,14 +10,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PharmacyStore.Models;
 using System.Reflection.Emit;
+using Microsoft.IdentityModel.Tokens;
 
 namespace PharmacyStore
 {
     public partial class StockForm : Form
     {
         DBConnection productDB = new DBConnection(new SqliteConnection("Data Source=ProductDB.db"));
+        Helper _helper = new Helper();   
         string _username;
         bool _privilege;
+        List<string> descriptions;
         public StockForm(string user, bool adminPrivilege)
         {
             InitializeComponent();
@@ -32,6 +35,7 @@ namespace PharmacyStore
 
         private void StockForm_Load(object sender, EventArgs e)
         {
+            
             if (_privilege)
             {
                 dataGridView1.Enabled = true;
@@ -54,13 +58,16 @@ namespace PharmacyStore
             List<string> comp;
             cat = productDB.GetColoumnItems("Category");
             comp = productDB.GetColoumnItems("Company");
+            descriptions = productDB.GetColoumnItems("Description");
             comboBox1.Items.Clear();
+            comboBox1.Items.Add("None");
             foreach (string item in cat)
             {
                 if (!comboBox1.Items.Contains(item))
                     comboBox1.Items.Add(item);
             }
             comboBox2.Items.Clear();
+            comboBox2.Items.Add("None");
             foreach (string item in comp)
             {
                 if (!comboBox2.Items.Contains(item))
@@ -71,18 +78,19 @@ namespace PharmacyStore
 
         private void dataGridView1_CellValuePushed(object sender, DataGridViewCellValueEventArgs e)
         {
-            MessageBox.Show("data changed");
         }
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show("data changed at "+e.RowIndex.ToString()+","+e.ColumnIndex.ToString());
         }
 
         private void addNewItem_button_Click(object sender, EventArgs e)
         {
             Form form = new AddItemForm(dataGridView1,label4);
             form.ShowDialog();
+            int count = productDB.LoadStock(dataGridView1, true);
+            label4.Text = "Total Item Count : " + count.ToString();
+            descriptions = productDB.GetColoumnItems("Description");
         }
 
         private void Delete_button_Click(object sender, EventArgs e)
@@ -94,6 +102,7 @@ namespace PharmacyStore
                 productDB.DeleteItem(row.Index);
                 int count = productDB.LoadStock(dataGridView1, _privilege);
                 label4.Text = "Total Item Count : " + count.ToString();
+                descriptions = productDB.GetColoumnItems("Description");
             }
 
             
@@ -115,7 +124,80 @@ namespace PharmacyStore
                 updateForm.ShowDialog();
                 int count = productDB.LoadStock(dataGridView1, true);
                 label4.Text = "Total Item Count : " + count.ToString();
+                descriptions = productDB.GetColoumnItems("Description");
             }
+        }
+/*        private bool search(string text, string in_text)
+        {
+            string up_in = in_text.ToUpper();
+            string low_in = in_text.ToLower();
+            int len = in_text.Length;
+            int len2 = text.Length;
+            int x = 0;
+            for (int i = 0; i < len; i++)
+            {
+                if (up_in[i] == text[x] || low_in[x] == text[x])
+                {
+                    if (x + 1 == len2) return true;
+                    x += 1;
+                }
+                else { x = 0; }
+            }
+            return false;
+        }*/
+
+        private void Search_textBox_TextChanged(object sender, EventArgs e)
+        {
+            string text = Search_textBox.Text;
+            if(text.Length >= 2)
+            {
+                Search_listBox.Items.Clear();
+                Search_listBox.Visible = true;
+                foreach(string desp in descriptions)
+                {
+                    if (_helper.search(text, desp))// desp.Contains(text))
+                    {
+                        Search_listBox.Items.Add(desp);
+                    }
+                }
+            }
+        }
+
+        private void Search_listBox_Click(object sender, EventArgs e)
+        {
+            string item = Search_listBox.Text;
+            string category = comboBox1.Text;
+            string company = comboBox2.Text;
+            //MessageBox.Show(text);
+            Search_listBox.Visible=false;
+            int count = _privilege ? productDB.Search(item, category, company, dataGridView1, _privilege) : productDB.Search(item, category, company, dataGridView2, _privilege);
+            dataGridView1.Refresh();
+            label4.Text = "Total Item Count : " + count.ToString();
+            descriptions = productDB.GetColoumnItems("Description");
+            
+        }
+
+        private void Search_listBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Search_pictureBox_Click(object sender, EventArgs e)
+        {
+            if (!Search_textBox.Text.IsNullOrEmpty())
+            {
+                string item = Search_listBox.Text;
+                string category = comboBox1.Text;
+                string company = comboBox2.Text;
+                //MessageBox.Show(text);
+                Search_listBox.Visible = false;
+                int count = _privilege ? productDB.Search(item, category, company, dataGridView1, _privilege) : productDB.Search(item, category, company, dataGridView2, _privilege);
+                dataGridView1.Refresh();
+                dataGridView2.Refresh();
+                label4.Text = "Total Item Count : " + count.ToString();
+                descriptions = productDB.GetColoumnItems("Description");
+            }
+            
         }
     }
 }

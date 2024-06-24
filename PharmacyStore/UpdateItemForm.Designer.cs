@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateItemForm));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Cancel_button = new System.Windows.Forms.Button();
             this.Update_button = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -48,7 +49,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.Cancel_button = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -65,6 +65,25 @@
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Submit";
+            // 
+            // Cancel_button
+            // 
+            this.Cancel_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Cancel_button.BackColor = System.Drawing.Color.LightCoral;
+            this.Cancel_button.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Cancel_button.FlatAppearance.BorderSize = 3;
+            this.Cancel_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.Cancel_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orchid;
+            this.Cancel_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cancel_button.ForeColor = System.Drawing.Color.Black;
+            this.Cancel_button.Location = new System.Drawing.Point(214, 19);
+            this.Cancel_button.Name = "Cancel_button";
+            this.Cancel_button.Size = new System.Drawing.Size(104, 49);
+            this.Cancel_button.TabIndex = 2;
+            this.Cancel_button.Text = "CANCEL";
+            this.Cancel_button.UseVisualStyleBackColor = false;
+            this.Cancel_button.Click += new System.EventHandler(this.Cancel_button_Click);
             // 
             // Update_button
             // 
@@ -195,6 +214,8 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(102, 250);
             this.comboBox2.Name = "comboBox2";
@@ -241,25 +262,6 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(205, 20);
             this.textBox3.TabIndex = 8;
-            // 
-            // Cancel_button
-            // 
-            this.Cancel_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Cancel_button.BackColor = System.Drawing.Color.LightCoral;
-            this.Cancel_button.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.Cancel_button.FlatAppearance.BorderSize = 3;
-            this.Cancel_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
-            this.Cancel_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orchid;
-            this.Cancel_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cancel_button.ForeColor = System.Drawing.Color.Black;
-            this.Cancel_button.Location = new System.Drawing.Point(214, 19);
-            this.Cancel_button.Name = "Cancel_button";
-            this.Cancel_button.Size = new System.Drawing.Size(104, 49);
-            this.Cancel_button.TabIndex = 2;
-            this.Cancel_button.Text = "CANCEL";
-            this.Cancel_button.UseVisualStyleBackColor = false;
-            this.Cancel_button.Click += new System.EventHandler(this.Cancel_button_Click);
             // 
             // UpdateItemForm
             // 

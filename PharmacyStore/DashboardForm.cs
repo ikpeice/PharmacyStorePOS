@@ -37,8 +37,6 @@ namespace PharmacyStore
         private void OnLoad(object sender, EventArgs e)
         {
             this.Text = "["+_username+"] -- Dashboard";
-            DateTime dt = DateTime.Now;
-            label2.Text = dt.ToString();
             
             if (_adminPrivilege)
             {
@@ -68,7 +66,7 @@ namespace PharmacyStore
         private void OnTimer_Tick(object sender, EventArgs e)
         {
             DateTime dt = DateTime.Now;
-            label2.Text = dt.ToString();
+            label2.Text = dt.GetDateTimeFormats()[11];
         }
 
         private void button1_Click(object sender, EventArgs e)

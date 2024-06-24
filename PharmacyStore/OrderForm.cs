@@ -21,5 +21,11 @@ namespace PharmacyStore
         {
 
         }
+
+        private void Search_pictureBox_Click(object sender, EventArgs e)
+        {
+            Form form = new OrderSearchForm(dataGridView);
+            form.ShowDialog();
+        }
     }
 }

@@ -40,7 +40,7 @@ namespace PharmacyStore
             list.Add(textBox2.Text);
             list.Add(textBox3.Text);
             list.Add(comboBox2.Items[comboBox2.SelectedIndex].ToString());
-            list.Add(dateTimePicker1.Value.ToShortDateString());
+            list.Add(dateTimePicker1.Value.GetDateTimeFormats()[5]);
 
             productDB.AddItem(list);
             int count = productDB.LoadStock(_dataGridView, true);
@@ -55,6 +55,7 @@ namespace PharmacyStore
             cat = productDB.GetColoumnItems("Category");
             comp = productDB.GetColoumnItems("Company");
             comboBox1.Items.Clear();
+            comboBox1.Items.Add("None");
             foreach (string item in cat)
             {
                 if (!comboBox1.Items.Contains(item))
@@ -63,6 +64,7 @@ namespace PharmacyStore
                 }
             }
             comboBox2.Items.Clear();
+            comboBox2.Items.Add("None");
             foreach (string item in comp)
             {
                 if (!comboBox2.Items.Contains(item)) 

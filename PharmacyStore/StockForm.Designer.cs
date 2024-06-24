@@ -34,6 +34,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.Search_textBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -65,12 +67,12 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.expirationDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Search_listBox = new System.Windows.Forms.ListBox();
+            this.Search_pictureBox = new System.Windows.Forms.PictureBox();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -78,21 +80,39 @@
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPage2.SuspendLayout();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Search_pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1076, 84);
+            this.panel1.Size = new System.Drawing.Size(936, 84);
             this.panel1.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.Search_pictureBox);
+            this.panel4.Controls.Add(this.Search_textBox);
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Location = new System.Drawing.Point(634, 35);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(303, 46);
+            this.panel4.TabIndex = 1;
+            // 
+            // Search_textBox
+            // 
+            this.Search_textBox.Location = new System.Drawing.Point(3, 23);
+            this.Search_textBox.Name = "Search_textBox";
+            this.Search_textBox.Size = new System.Drawing.Size(258, 20);
+            this.Search_textBox.TabIndex = 0;
+            this.Search_textBox.TextChanged += new System.EventHandler(this.Search_textBox_TextChanged);
             // 
             // label4
             // 
@@ -112,7 +132,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(764, 69);
+            this.label3.Location = new System.Drawing.Point(3, 7);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 13);
             this.label3.TabIndex = 4;
@@ -126,7 +146,7 @@
             this.groupBox2.Controls.Add(this.comboBox1);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(843, 3);
+            this.groupBox2.Location = new System.Drawing.Point(361, 5);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(228, 76);
             this.groupBox2.TabIndex = 3;
@@ -246,7 +266,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(1063, 249);
+            this.dataGridView1.Size = new System.Drawing.Size(923, 220);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
@@ -254,14 +274,14 @@
             // 
             // itemcode
             // 
-            this.itemcode.HeaderText = "Item Code";
+            this.itemcode.HeaderText = "Code";
             this.itemcode.Name = "itemcode";
             this.itemcode.ReadOnly = true;
             // 
             // itemDescription
             // 
             this.itemDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.itemDescription.HeaderText = "Item Description";
+            this.itemDescription.HeaderText = "Description";
             this.itemDescription.Name = "itemDescription";
             this.itemDescription.ReadOnly = true;
             // 
@@ -313,7 +333,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 90);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1077, 281);
+            this.tabControl1.Size = new System.Drawing.Size(937, 252);
             this.tabControl1.TabIndex = 2;
             // 
             // tabPage1
@@ -322,7 +342,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1069, 255);
+            this.tabPage1.Size = new System.Drawing.Size(929, 226);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Available Products";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -359,19 +379,19 @@
             this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(1063, 249);
+            this.dataGridView2.Size = new System.Drawing.Size(923, 220);
             this.dataGridView2.TabIndex = 2;
             // 
             // dataGridViewTextBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Item Code";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Code";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Item Description";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Description";
             this.dataGridViewTextBoxColumn2.MinimumWidth = 200;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
@@ -414,46 +434,43 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1069, 255);
+            this.tabPage2.Size = new System.Drawing.Size(929, 226);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Admin Only";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // panel4
-            // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.Controls.Add(this.pictureBox1);
-            this.panel4.Controls.Add(this.textBox5);
-            this.panel4.Location = new System.Drawing.Point(764, 82);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(312, 27);
-            this.panel4.TabIndex = 1;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::PharmacyStore.Properties.Resources.magnifying_glass;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(267, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(25, 20);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(3, 3);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(258, 20);
-            this.textBox5.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 377);
+            this.panel2.Location = new System.Drawing.Point(0, 348);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1076, 86);
+            this.panel2.Size = new System.Drawing.Size(936, 86);
             this.panel2.TabIndex = 3;
+            // 
+            // Search_listBox
+            // 
+            this.Search_listBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Search_listBox.FormattingEnabled = true;
+            this.Search_listBox.Location = new System.Drawing.Point(633, 90);
+            this.Search_listBox.Name = "Search_listBox";
+            this.Search_listBox.ScrollAlwaysVisible = true;
+            this.Search_listBox.Size = new System.Drawing.Size(261, 225);
+            this.Search_listBox.TabIndex = 5;
+            this.Search_listBox.Visible = false;
+            this.Search_listBox.Click += new System.EventHandler(this.Search_listBox_Click);
+            this.Search_listBox.SelectedIndexChanged += new System.EventHandler(this.Search_listBox_SelectedIndexChanged);
+            // 
+            // Search_pictureBox
+            // 
+            this.Search_pictureBox.BackgroundImage = global::PharmacyStore.Properties.Resources.magnifying_glass;
+            this.Search_pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Search_pictureBox.Location = new System.Drawing.Point(267, 23);
+            this.Search_pictureBox.Name = "Search_pictureBox";
+            this.Search_pictureBox.Size = new System.Drawing.Size(25, 20);
+            this.Search_pictureBox.TabIndex = 1;
+            this.Search_pictureBox.TabStop = false;
+            this.Search_pictureBox.Click += new System.EventHandler(this.Search_pictureBox_Click);
             // 
             // dataGridViewImageColumn1
             // 
@@ -468,9 +485,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(1076, 463);
+            this.ClientSize = new System.Drawing.Size(936, 434);
+            this.Controls.Add(this.Search_listBox);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel4);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -480,6 +497,8 @@
             this.Load += new System.EventHandler(this.StockForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -488,10 +507,8 @@
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Search_pictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -508,8 +525,8 @@
         private System.Windows.Forms.Button Update_button;
         private System.Windows.Forms.Button addNewItem_button;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.PictureBox Search_pictureBox;
+        private System.Windows.Forms.TextBox Search_textBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -520,6 +537,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.ListBox Search_listBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
