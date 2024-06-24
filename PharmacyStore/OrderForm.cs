@@ -24,8 +24,29 @@ namespace PharmacyStore
 
         private void Search_pictureBox_Click(object sender, EventArgs e)
         {
-            Form form = new OrderSearchForm(dataGridView);
+            Form form = new OrderSearchForm(dataGridView, Total_textBox);
             form.ShowDialog();
+        }
+
+        private void dataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+
+        }
+
+        private void dataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            Total_textBox.Text = (float.Parse(Total_textBox.Text) - float.Parse(e.Row.Cells[5].Value.ToString())).ToString();
+        }
+
+        private void dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            int qty = Int32.Parse(dataGridView.Rows[rowIndex].Cells[e.ColumnIndex].Value.ToString());
+            float amount = float.Parse(dataGridView.Rows[rowIndex].Cells[3].Value.ToString());
+            if (qty > 0) {
+                dataGridView.Rows[rowIndex].Cells[5].Value = (float)qty * amount;
+            }
+
         }
     }
 }

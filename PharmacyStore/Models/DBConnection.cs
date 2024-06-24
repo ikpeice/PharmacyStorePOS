@@ -257,14 +257,14 @@ namespace PharmacyStore.Models
             return items;
         }
 
-        public void DeleteItem(int rowIndex)
+        public void DeleteItem(string code)
         {
-            string sql = "DELETE FROM product WHERE id = @id_";
+            string sql = "DELETE FROM product WHERE Code = @Code";
             try
             {
                 conn.Open();
                 SqliteCommand command = new SqliteCommand(sql, conn);
-                command.Parameters.AddWithValue("id_", rowIndex);
+                command.Parameters.AddWithValue("Code", code);
                 command.ExecuteNonQuery();
                 MessageBox.Show("Deleted successfully");
                 conn.Close();

@@ -98,8 +98,8 @@ namespace PharmacyStore
             for(int j = 0; j < dataGridView1.SelectedRows.Count; j++)
             {
                 DataGridViewRow row = dataGridView1.SelectedRows[j];
-                
-                productDB.DeleteItem(row.Index);
+
+                productDB.DeleteItem(row.Cells[0].Value.ToString());
                 int count = productDB.LoadStock(dataGridView1, _privilege);
                 label4.Text = "Total Item Count : " + count.ToString();
                 descriptions = productDB.GetColoumnItems("Description");

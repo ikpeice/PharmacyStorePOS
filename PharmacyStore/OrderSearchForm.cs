@@ -22,10 +22,12 @@ namespace PharmacyStore
         bool _privilege;
         List<string> descriptions;
         DataGridView _dataGridView_Order;
-        public OrderSearchForm(DataGridView dataGridView_)
+        TextBox _totalTextBox;
+        public OrderSearchForm(DataGridView dataGridView_, TextBox _textBox)
         {
             InitializeComponent();
             _dataGridView_Order = dataGridView_;
+            _totalTextBox = _textBox;
         }
 
         private void OrderSearchForm_Load(object sender, EventArgs e)
@@ -65,16 +67,18 @@ namespace PharmacyStore
                 _dataGridView_Order.Rows[index].Cells[0].Value = row.Cells[0].Value.ToString();
                 _dataGridView_Order.Rows[index].Cells[1].Value = row.Cells[1].Value.ToString();
                 _dataGridView_Order.Rows[index].Cells[2].Value = numericUpDown1.Value.ToString();
-                _dataGridView_Order.Rows[index].Cells[3].Value = row.Cells[4].Value.ToString();
-                _dataGridView_Order.Rows[index].Cells[4].Value = "0";
-                _dataGridView_Order.Rows[index].Cells[5].Value = numericUpDown1.Value * Int32.Parse(row.Cells[4].Value.ToString());
+                _dataGridView_Order.Rows[index].Cells[3].Value = (float)Int32.Parse(row.Cells[4].Value.ToString());
+                _dataGridView_Order.Rows[index].Cells[4].Value = "0.00";
+                _dataGridView_Order.Rows[index].Cells[5].Value = (float)numericUpDown1.Value * (float)Int32.Parse(row.Cells[4].Value.ToString());
+                float x = float.Parse(_totalTextBox.Text);
+                float y = (float)numericUpDown1.Value * (float)Int32.Parse(row.Cells[4].Value.ToString());
+                _totalTextBox.Text = (x + y).ToString();
 
-
-/*                for (int i = 0; i < row.Cells.Count; i++)
-                {
-                    list.Add(row.Cells[i].Value.ToString());
-                    _dataGridView_Order.Rows[index].Cells[i].Value = row.Cells[i].Value.ToString();// (dataGridView.SelectedRows[0].Cells[i]);
-                }*/
+                /*                for (int i = 0; i < row.Cells.Count; i++)
+                                {
+                                    list.Add(row.Cells[i].Value.ToString());
+                                    _dataGridView_Order.Rows[index].Cells[i].Value = row.Cells[i].Value.ToString();// (dataGridView.SelectedRows[0].Cells[i]);
+                                }*/
 
             }
         }
