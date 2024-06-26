@@ -40,6 +40,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.Search_pictureBox = new System.Windows.Forms.PictureBox();
+            this.Refresh_button = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
@@ -50,12 +51,12 @@
             this.button3 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.change_textBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.transfer_textBox = new System.Windows.Forms.TextBox();
+            this.cash_textBox = new System.Windows.Forms.TextBox();
             this.Total_textBox = new System.Windows.Forms.TextBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,7 +65,6 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.expirationDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Refresh_button = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -78,13 +78,12 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.Refresh_button);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(909, 94);
+            this.panel1.Size = new System.Drawing.Size(795, 94);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -115,7 +114,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.Controls.Add(this.label8);
             this.panel4.Controls.Add(this.Search_pictureBox);
-            this.panel4.Location = new System.Drawing.Point(740, 32);
+            this.panel4.Location = new System.Drawing.Point(626, 32);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(169, 59);
             this.panel4.TabIndex = 0;
@@ -142,6 +141,19 @@
             this.Search_pictureBox.TabStop = false;
             this.Search_pictureBox.Click += new System.EventHandler(this.Search_pictureBox_Click);
             // 
+            // Refresh_button
+            // 
+            this.Refresh_button.BackColor = System.Drawing.Color.Orchid;
+            this.Refresh_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Refresh_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Refresh_button.Location = new System.Drawing.Point(3, 3);
+            this.Refresh_button.Name = "Refresh_button";
+            this.Refresh_button.Size = new System.Drawing.Size(76, 27);
+            this.Refresh_button.TabIndex = 6;
+            this.Refresh_button.Text = "Refresh";
+            this.Refresh_button.UseVisualStyleBackColor = false;
+            this.Refresh_button.Click += new System.EventHandler(this.Refresh_button_Click);
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
@@ -150,9 +162,9 @@
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 266);
+            this.panel2.Location = new System.Drawing.Point(0, 315);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(909, 166);
+            this.panel2.Size = new System.Drawing.Size(795, 166);
             this.panel2.TabIndex = 1;
             // 
             // panel5
@@ -229,7 +241,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.Control;
-            this.label7.Location = new System.Drawing.Point(457, 68);
+            this.label7.Location = new System.Drawing.Point(343, 68);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(127, 15);
             this.label7.TabIndex = 6;
@@ -241,7 +253,7 @@
             this.button3.BackColor = System.Drawing.Color.CornflowerBlue;
             this.button3.BackgroundImage = global::PharmacyStore.Properties.Resources.shopping;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.Location = new System.Drawing.Point(485, 5);
+            this.button3.Location = new System.Drawing.Point(371, 5);
             this.button3.MaximumSize = new System.Drawing.Size(60, 60);
             this.button3.MinimumSize = new System.Drawing.Size(60, 60);
             this.button3.Name = "button3";
@@ -253,15 +265,16 @@
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.Refresh_button);
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.textBox4);
+            this.panel3.Controls.Add(this.change_textBox);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.textBox3);
-            this.panel3.Controls.Add(this.textBox2);
+            this.panel3.Controls.Add(this.transfer_textBox);
+            this.panel3.Controls.Add(this.cash_textBox);
             this.panel3.Controls.Add(this.Total_textBox);
-            this.panel3.Location = new System.Drawing.Point(590, 0);
+            this.panel3.Location = new System.Drawing.Point(476, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(319, 166);
             this.panel3.TabIndex = 0;
@@ -279,17 +292,18 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Change N";
             // 
-            // textBox4
+            // change_textBox
             // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.change_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(150, 99);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(166, 26);
-            this.textBox4.TabIndex = 6;
-            this.textBox4.Text = "0.00";
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.change_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.change_textBox.Location = new System.Drawing.Point(150, 99);
+            this.change_textBox.Name = "change_textBox";
+            this.change_textBox.ReadOnly = true;
+            this.change_textBox.Size = new System.Drawing.Size(166, 26);
+            this.change_textBox.TabIndex = 6;
+            this.change_textBox.Text = "0.00";
+            this.change_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
             // 
@@ -330,29 +344,31 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Total N";
             // 
-            // textBox3
+            // transfer_textBox
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.transfer_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(150, 67);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(166, 26);
-            this.textBox3.TabIndex = 2;
-            this.textBox3.Text = "0.00";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.transfer_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.transfer_textBox.Location = new System.Drawing.Point(150, 67);
+            this.transfer_textBox.Name = "transfer_textBox";
+            this.transfer_textBox.Size = new System.Drawing.Size(166, 26);
+            this.transfer_textBox.TabIndex = 2;
+            this.transfer_textBox.Text = "0.00";
+            this.transfer_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.transfer_textBox.TextChanged += new System.EventHandler(this.transfer_textBox_TextChanged);
             // 
-            // textBox2
+            // cash_textBox
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.cash_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(150, 35);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(166, 26);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.Text = "0.00";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.cash_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cash_textBox.Location = new System.Drawing.Point(150, 35);
+            this.cash_textBox.Name = "cash_textBox";
+            this.cash_textBox.Size = new System.Drawing.Size(166, 26);
+            this.cash_textBox.TabIndex = 1;
+            this.cash_textBox.Text = "0.00";
+            this.cash_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.cash_textBox.TextChanged += new System.EventHandler(this.cash_textBox_TextChanged);
             // 
             // Total_textBox
             // 
@@ -361,6 +377,7 @@
             this.Total_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Total_textBox.Location = new System.Drawing.Point(150, 3);
             this.Total_textBox.Name = "Total_textBox";
+            this.Total_textBox.ReadOnly = true;
             this.Total_textBox.Size = new System.Drawing.Size(166, 26);
             this.Total_textBox.TabIndex = 0;
             this.Total_textBox.Text = "0.00";
@@ -402,11 +419,8 @@
             this.dataGridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dataGridView.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView.Size = new System.Drawing.Size(909, 168);
+            this.dataGridView.Size = new System.Drawing.Size(795, 217);
             this.dataGridView.TabIndex = 4;
-            this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
-            this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
-            this.dataGridView.CurrentCellChanged += new System.EventHandler(this.dataGridView_CurrentCellChanged);
             this.dataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView_RowsAdded);
             this.dataGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridView_UserDeletingRow);
             // 
@@ -461,26 +475,13 @@
             this.expirationDate.Name = "expirationDate";
             this.expirationDate.ReadOnly = true;
             // 
-            // Refresh_button
-            // 
-            this.Refresh_button.BackColor = System.Drawing.Color.Orchid;
-            this.Refresh_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Refresh_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Refresh_button.Location = new System.Drawing.Point(3, 64);
-            this.Refresh_button.Name = "Refresh_button";
-            this.Refresh_button.Size = new System.Drawing.Size(85, 27);
-            this.Refresh_button.TabIndex = 6;
-            this.Refresh_button.Text = "Refresh";
-            this.Refresh_button.UseVisualStyleBackColor = false;
-            this.Refresh_button.Click += new System.EventHandler(this.Refresh_button_Click);
-            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(909, 432);
+            this.ClientSize = new System.Drawing.Size(795, 481);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -512,8 +513,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox transfer_textBox;
+        private System.Windows.Forms.TextBox cash_textBox;
         private System.Windows.Forms.TextBox Total_textBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -532,7 +533,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox change_textBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;

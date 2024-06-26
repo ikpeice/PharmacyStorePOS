@@ -12,7 +12,6 @@ namespace PharmacyStore
 {
     public partial class OrderForm : Form
     {
-        private bool EditEnabled = false;
         public OrderForm()
         {
             InitializeComponent();
@@ -25,10 +24,8 @@ namespace PharmacyStore
 
         private void Search_pictureBox_Click(object sender, EventArgs e)
         {
-            EditEnabled = false;
             Form form = new OrderSearchForm(dataGridView, Total_textBox);
             form.ShowDialog();
-            EditEnabled = true;
         }
 
         private void dataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -44,37 +41,57 @@ namespace PharmacyStore
         private void Refresh_button_Click(object sender, EventArgs e)
         {
             int rowCount = dataGridView.Rows.Count;
-            MessageBox.Show(rowCount.ToString());
-        }
-
-        private void dataGridView_CurrentCellChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (EditEnabled)
+            float total = 0;
+            for(int i = 0; i < rowCount; i++)
             {
-                int rowIndex = e.RowIndex;
-                int qty = Int32.Parse(dataGridView.Rows[rowIndex].Cells[e.ColumnIndex].Value.ToString());
-                float amount = float.Parse(dataGridView.Rows[rowIndex].Cells[3].Value.ToString());
-                if (qty > 0)
-                {
-                    dataGridView.Rows[rowIndex].Cells[5].Value = (float)qty * amount;
-                }
+                float amount = float.Parse(dataGridView.Rows[i].Cells[3].Value.ToString());
+                int qty = Int32.Parse(dataGridView.Rows[i].Cells[2].Value.ToString());
+                dataGridView.Rows[i].Cells[5].Value = ((float)qty * amount);
+                total += ((float)qty * amount);
+
+            }
+            Total_textBox.Text = total.ToString();
+        }
+
+        private void cash_textBox_TextChanged(object sender, EventArgs e)
+        {
+            double cash = 0.00;
+            double transfer = 0.00;
+
+            float total = float.Parse(Total_textBox.Text);
+
+            if (cash_textBox.Text == string.Empty) cash = 0.00;
+            else cash = float.Parse(cash_textBox.Text);
+
+            if (transfer_textBox.Text == string.Empty) transfer = 0.00;
+            else transfer = float.Parse(transfer_textBox.Text);
+
+            if ((cash + transfer) >= total)
+            {
+                change_textBox.Text = ((cash + transfer) - total).ToString();
             }
 
+
         }
 
-        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void transfer_textBox_TextChanged(object sender, EventArgs e)
         {
+            double cash = 0.00;
+            double transfer = 0.00;
+
+                float total = float.Parse(Total_textBox.Text);
+
+                if (cash_textBox.Text == string.Empty) cash = 0.00;
+                else cash = float.Parse(cash_textBox.Text);
+
+                if (transfer_textBox.Text == string.Empty) transfer = 0.00;
+                else transfer = float.Parse(transfer_textBox.Text);
+
+                if ((cash + transfer) >= total)
+                {
+                    change_textBox.Text = ((cash + transfer) - total).ToString();
+                }
 
         }
-
-        /*        private void dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-                {
-
-
-                }*/
     }
 }
