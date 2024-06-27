@@ -44,11 +44,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.cancelOrder_button = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.checkOut_button = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.change_textBox = new System.Windows.Forms.TextBox();
@@ -159,7 +159,7 @@
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.button3);
+            this.panel2.Controls.Add(this.checkOut_button);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 315);
@@ -172,7 +172,7 @@
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel5.Controls.Add(this.button2);
-            this.panel5.Controls.Add(this.button1);
+            this.panel5.Controls.Add(this.cancelOrder_button);
             this.panel5.Controls.Add(this.label5);
             this.panel5.Controls.Add(this.label6);
             this.panel5.Location = new System.Drawing.Point(0, 0);
@@ -195,20 +195,21 @@
             this.button2.TabIndex = 3;
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // cancelOrder_button
             // 
-            this.button1.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.button1.BackgroundImage = global::PharmacyStore.Properties.Resources.close_;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(91, 3);
-            this.button1.MaximumSize = new System.Drawing.Size(60, 60);
-            this.button1.MinimumSize = new System.Drawing.Size(60, 60);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(60, 60);
-            this.button1.TabIndex = 1;
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = false;
+            this.cancelOrder_button.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.cancelOrder_button.BackgroundImage = global::PharmacyStore.Properties.Resources.close_;
+            this.cancelOrder_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cancelOrder_button.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.cancelOrder_button.Location = new System.Drawing.Point(91, 3);
+            this.cancelOrder_button.MaximumSize = new System.Drawing.Size(60, 60);
+            this.cancelOrder_button.MinimumSize = new System.Drawing.Size(60, 60);
+            this.cancelOrder_button.Name = "cancelOrder_button";
+            this.cancelOrder_button.Size = new System.Drawing.Size(60, 60);
+            this.cancelOrder_button.TabIndex = 1;
+            this.cancelOrder_button.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.cancelOrder_button.UseVisualStyleBackColor = false;
+            this.cancelOrder_button.Click += new System.EventHandler(this.cancelOrder_button_Click);
             // 
             // label5
             // 
@@ -241,25 +242,26 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.Control;
-            this.label7.Location = new System.Drawing.Point(343, 68);
+            this.label7.Location = new System.Drawing.Point(368, 67);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(127, 15);
+            this.label7.Size = new System.Drawing.Size(72, 15);
             this.label7.TabIndex = 6;
-            this.label7.Text = "CheckOut Payment";
+            this.label7.Text = "CheckOut ";
             // 
-            // button3
+            // checkOut_button
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.button3.BackgroundImage = global::PharmacyStore.Properties.Resources.shopping;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.Location = new System.Drawing.Point(371, 5);
-            this.button3.MaximumSize = new System.Drawing.Size(60, 60);
-            this.button3.MinimumSize = new System.Drawing.Size(60, 60);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(60, 60);
-            this.button3.TabIndex = 5;
-            this.button3.UseVisualStyleBackColor = false;
+            this.checkOut_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkOut_button.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.checkOut_button.BackgroundImage = global::PharmacyStore.Properties.Resources.shopping;
+            this.checkOut_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.checkOut_button.Location = new System.Drawing.Point(371, 5);
+            this.checkOut_button.MaximumSize = new System.Drawing.Size(60, 60);
+            this.checkOut_button.MinimumSize = new System.Drawing.Size(60, 60);
+            this.checkOut_button.Name = "checkOut_button";
+            this.checkOut_button.Size = new System.Drawing.Size(60, 60);
+            this.checkOut_button.TabIndex = 5;
+            this.checkOut_button.UseVisualStyleBackColor = false;
+            this.checkOut_button.Click += new System.EventHandler(this.checkOut_button_Click);
             // 
             // panel3
             // 
@@ -519,11 +521,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button cancelOrder_button;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button checkOut_button;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;

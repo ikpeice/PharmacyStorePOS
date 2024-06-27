@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.Sqlite;
+using Microsoft.IdentityModel.Tokens;
 using PharmacyStore.Models;
 using System;
 using System.Collections.Generic;
@@ -53,6 +54,7 @@ namespace PharmacyStore
             }
             numericUpDown1.Value = 1;
             int count = productDB.LoadStock(dataGridView, _privilege);
+            label5.Text = "Item Count : " + count.ToString();
         }
 
         private void Add_button_Click(object sender, EventArgs e)
@@ -85,6 +87,52 @@ namespace PharmacyStore
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void Search_textBox_TextChanged(object sender, EventArgs e)
+        {
+            string text = Search_textBox.Text;
+            if (text.Length >= 2)
+            {
+                Search_listBox.Items.Clear();
+                Search_listBox.Visible = true;
+                foreach (string desp in descriptions)
+                {
+                    if (_helper.search(text, desp))// desp.Contains(text))
+                    {
+                        Search_listBox.Items.Add(desp);
+                    }
+                }
+            }
+        }
+
+        private void Search_listBox_Click(object sender, EventArgs e)
+        {
+            string item = Search_listBox.Text;
+            string category = comboBox1.Text;
+            string company = comboBox2.Text;
+            //MessageBox.Show(text);
+            Search_listBox.Visible = false;
+            int count = productDB.Search(item, category, company, dataGridView, false);// : productDB.Search(item, category, company, dataGridView2, _privilege);
+            dataGridView.Refresh();
+            label5.Text = "Item Count : " + count.ToString();
+            descriptions = productDB.GetColoumnItems("Description");
+        }
+
+        private void Search_pictureBox_Click(object sender, EventArgs e)
+        {
+            string item = Search_listBox.Text;
+            string category = comboBox1.Text;
+            string company = comboBox2.Text;
+            if (!item.IsNullOrEmpty() || category != string.Empty || company != string.Empty)
+            {
+                Search_listBox.Visible = false;
+                int count = productDB.Search(item, category, company, dataGridView, false);// : productDB.Search(item, category, company, dataGridView2, _privilege);
+                dataGridView.Refresh();
+                label5.Text = "Item Count : " + count.ToString();
+                descriptions = productDB.GetColoumnItems("Description");
+            }
 
         }
     }

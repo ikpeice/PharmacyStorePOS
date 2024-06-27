@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.Xml;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,6 +14,9 @@ namespace PharmacyStore
 {
     public partial class OrderForm : Form
     {
+        double cash = 0.00;
+        double transfer = 0.00;
+        double total = 0.00;
         public OrderForm()
         {
             InitializeComponent();
@@ -55,16 +60,14 @@ namespace PharmacyStore
 
         private void cash_textBox_TextChanged(object sender, EventArgs e)
         {
-            double cash = 0.00;
-            double transfer = 0.00;
 
-            float total = float.Parse(Total_textBox.Text);
+            total = double.Parse(Total_textBox.Text);
 
             if (cash_textBox.Text == string.Empty) cash = 0.00;
-            else cash = float.Parse(cash_textBox.Text);
+            else cash = double.Parse(cash_textBox.Text);
 
             if (transfer_textBox.Text == string.Empty) transfer = 0.00;
-            else transfer = float.Parse(transfer_textBox.Text);
+            else transfer = double.Parse(transfer_textBox.Text);
 
             if ((cash + transfer) >= total)
             {
@@ -76,21 +79,46 @@ namespace PharmacyStore
 
         private void transfer_textBox_TextChanged(object sender, EventArgs e)
         {
-            double cash = 0.00;
-            double transfer = 0.00;
 
-                float total = float.Parse(Total_textBox.Text);
+
+                total = double.Parse(Total_textBox.Text);
 
                 if (cash_textBox.Text == string.Empty) cash = 0.00;
-                else cash = float.Parse(cash_textBox.Text);
+                else cash = double.Parse(cash_textBox.Text);
 
                 if (transfer_textBox.Text == string.Empty) transfer = 0.00;
-                else transfer = float.Parse(transfer_textBox.Text);
+                else transfer = double.Parse(transfer_textBox.Text);
 
                 if ((cash + transfer) >= total)
                 {
                     change_textBox.Text = ((cash + transfer) - total).ToString();
                 }
+
+        }
+
+        private void checkOut_button_Click(object sender, EventArgs e)
+        {
+
+            Form form = new CheckOutForm(Total_textBox.Text, change_textBox.Text);
+            form.ShowDialog();
+        }
+
+        private void cancelOrder_button_Click(object sender, EventArgs e)
+        {
+            if(dataGridView.Rows.Count > 0)
+            {
+                DialogResult result = MessageBox.Show("Do you want to cancle the order?",
+                                "Cancel Order",
+                                MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    dataGridView.Rows.Clear();
+                    Total_textBox.Text = "0.00";
+                    cash_textBox.Text = "0.00";
+                    transfer_textBox.Text = "0.00";
+                    change_textBox.Text = "0.00";
+                }
+            }
 
         }
     }

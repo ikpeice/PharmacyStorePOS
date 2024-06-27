@@ -184,11 +184,11 @@ namespace PharmacyStore
 
         private void Search_pictureBox_Click(object sender, EventArgs e)
         {
-            if (!Search_textBox.Text.IsNullOrEmpty())
+            string item = Search_listBox.Text;
+            string category = comboBox1.Text;
+            string company = comboBox2.Text;
+            if (!item.IsNullOrEmpty() || category != string.Empty || company !=string.Empty)
             {
-                string item = Search_listBox.Text;
-                string category = comboBox1.Text;
-                string company = comboBox2.Text;
                 //MessageBox.Show(text);
                 Search_listBox.Visible = false;
                 int count = _privilege ? productDB.Search(item, category, company, dataGridView1, _privilege) : productDB.Search(item, category, company, dataGridView2, _privilege);
