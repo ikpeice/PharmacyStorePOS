@@ -99,7 +99,7 @@ namespace PharmacyStore
         private void checkOut_button_Click(object sender, EventArgs e)
         {
 
-            Form form = new CheckOutForm(Total_textBox.Text, change_textBox.Text);
+            Form form = new CheckOutForm(dataGridView, Total_textBox.Text, change_textBox.Text);
             form.ShowDialog();
         }
 

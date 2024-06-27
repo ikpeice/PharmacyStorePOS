@@ -372,5 +372,31 @@ namespace PharmacyStore.Models
             return count;
         }
 
+
+        public void InserSoldItem(List<string> row)
+        {
+            string sql = "INSERT INTO soldItem (Code, Description, Cashier, Invoice, Amount, Profit, Date, Time) " +
+            "VALUES (@Code, @Description, @Cashier, @Invoice, @Amount, @Profit, @Date, @Time)";
+            try
+            {
+                this.conn.Open();
+                var command = new SqliteCommand(sql, conn);
+                command.Parameters.AddWithValue("Code", row[0]);
+                command.Parameters.AddWithValue("Description", row[1]);
+                command.Parameters.AddWithValue("Cashier", row[2]);
+                command.Parameters.AddWithValue("Invoice", row[3]);
+                command.Parameters.AddWithValue("Amount", row[4]);
+                command.Parameters.AddWithValue("Profit", row[5]);
+                command.Parameters.AddWithValue("Date", row[6]);
+                command.Parameters.AddWithValue("Time", row[7]);
+                command.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Inserted successfully");
+            }
+            catch (SqliteException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }

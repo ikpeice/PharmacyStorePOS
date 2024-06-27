@@ -14,11 +14,13 @@ namespace PharmacyStore
     {
         string total_received;
         string change;
-        public CheckOutForm(string total_received, string change)
+        DataGridView _dataGridView;
+        public CheckOutForm(DataGridView dataGridView,string total_received, string change)
         {
             InitializeComponent();
             this.total_received = total_received;
             this.change = change;
+            _dataGridView = dataGridView;
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -30,6 +32,15 @@ namespace PharmacyStore
         {
             label7.Text = "N " + total_received;
             label8.Text = "N "+this.change;
+        }
+
+        private void save_pictureBox_Click(object sender, EventArgs e)
+        {
+            int rowCount = _dataGridView.Rows.Count;
+            for(int r = 0; r < rowCount; r++)
+            {
+               
+            }
         }
     }
 }
