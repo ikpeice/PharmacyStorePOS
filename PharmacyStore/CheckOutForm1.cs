@@ -50,8 +50,11 @@ namespace PharmacyStore
                 {
                     item.Add(cell.Value.ToString());
                 }
-                int cost = int.Parse(productDB.LoadItem(item[0])[5]);
+                double cost = double.Parse(productDB.LoadItem(item[0])[5]);
+                double soldPrice = double.Parse(item[3]); 
                 int qty = int.Parse(item[2]);
+                double profit = (soldPrice - cost) * qty;
+                MessageBox.Show(profit.ToString());
                 // To do
                 // calculate profit and store to db
             }
