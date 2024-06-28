@@ -1,9 +1,11 @@
 ﻿using Microsoft.Data.Sqlite;
+using Microsoft.Identity.Client;
 using PharmacyStore.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,17 +17,19 @@ namespace PharmacyStore
     public partial class CheckOutForm : Form
     {
         DBConnection productDB = new DBConnection(new SqliteConnection("Data Source=ProductDB.db"));
-        string total_received;
-        string change;
-        string invoice;
+        private string total_received;
+        private string change;
+        private string cashierName="";
+        Label invoice_label;
         DataGridView _dataGridView;
-        public CheckOutForm(DataGridView dataGridView,string total_received, string change, string inv)
+        public CheckOutForm(DataGridView dataGridView,string total_received, string change, Label _invoice_label, string _cashierName)
         {
             InitializeComponent();
             this.total_received = total_received;
             this.change = change;
             _dataGridView = dataGridView;
-            invoice = inv;
+            invoice_label = _invoice_label;
+            this.cashierName = _cashierName;
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -37,27 +41,53 @@ namespace PharmacyStore
         {
             label7.Text = "N " + total_received;
             label8.Text = "N "+this.change;
+            label10.Text = invoice_label.Text;
         }
 
         private void save_pictureBox_Click(object sender, EventArgs e)
         {
+            SqlDateTime sqlDateTime = new SqlDateTime(DateTime.Now);
+
+            string dateTime = sqlDateTime.ToSqlString().Value;
+            bool state = false;
+            string date = dateTime.Substring(0, dateTime.IndexOf(' '));
+            string time = dateTime.Substring(dateTime.IndexOf(" ") + 1);
+
+
+
+
             int rowCount = _dataGridView.Rows.Count;
-            foreach(DataGridViewRow row in _dataGridView.Rows)
+            //double profit = 0.00;
+            foreach (DataGridViewRow row in _dataGridView.Rows)
             {
-               List<string> item = new List<string>();
-                
-                foreach(DataGridViewCell cell in row.Cells)
-                {
-                    item.Add(cell.Value.ToString());
-                }
-                double cost = double.Parse(productDB.LoadItem(item[0])[5]);
-                double soldPrice = double.Parse(item[3]); 
-                int qty = int.Parse(item[2]);
+                List<string> soldItem = new List<string>();
+                double cost = double.Parse(productDB.GetItemCell(row.Cells[1].Value.ToString(), "CostPrice"));
+                double soldPrice = double.Parse(row.Cells[3].Value.ToString()); 
+                int qty = int.Parse(row.Cells[2].Value.ToString());
                 double profit = (soldPrice - cost) * qty;
                 MessageBox.Show(profit.ToString());
-                // To do
-                // calculate profit and store to db
+
+                soldItem.Add(row.Cells[0].Value.ToString()); // item code
+                soldItem.Add(row.Cells[1].Value.ToString()); // item description
+                soldItem.Add(cashierName);
+                soldItem.Add(invoice_label.Text);
+                soldItem.Add(row.Cells[2].Value.ToString()); // Qty
+                soldItem.Add(row.Cells[3].Value.ToString()); // Amount
+                soldItem.Add(profit.ToString());
+                soldItem.Add(date);
+                soldItem.Add(time);
+
+                state = productDB.InserSoldItem(soldItem);
+
             }
+            if (state)
+            {
+                invoice_label.Text = (Int32.Parse(invoice_label.Text) + 1).ToString();
+                productDB.UpdateInvoice(invoice_label.Text);
+                _dataGridView.Rows.Clear();
+                this.Close();
+            }
+
         }
     }
 }

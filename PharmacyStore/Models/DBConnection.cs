@@ -117,26 +117,24 @@ namespace PharmacyStore.Models
             return result;
         }
 
-        public List<string> LoadItem(string itemCode)
+        public string GetItemCell(string description, string columnHeader = "")
         {
-            string sql = "SELECT * From product WHERE Code = @Code";
-            List<string> rowItem = new List<string>();
+            string sql = "SELECT * From product WHERE Description = @Description";
+            string item = "";
             try
             {
                 this.conn.Open();
                 SqliteCommand command = new SqliteCommand(sql, conn);
-                command.Parameters.AddWithValue("Code", itemCode);
+                command.Parameters.AddWithValue("Description", description);
                 command.ExecuteNonQuery();
                 var reader = command.ExecuteReader();
                 
                 if (reader.HasRows)
                 {
-                    int i = 1; // start from Item code
                     while (reader.Read())
                     {
-                        string item = reader.GetString(i);
-                        rowItem.Add(item);
-                        i++;
+                        item = reader.GetString(reader.GetOrdinal(columnHeader));
+
                     }
                     reader.Close();
                     
@@ -146,7 +144,7 @@ namespace PharmacyStore.Models
             catch(SqliteException ex) {
                 MessageBox.Show(ex.ToString());
             }
-            return rowItem;
+            return item;
         } 
         
         public int LoadStock(DataGridView dataGridView, bool privilege)
@@ -373,10 +371,11 @@ namespace PharmacyStore.Models
         }
 
 
-        public void InserSoldItem(List<string> row)
+        public bool InserSoldItem(List<string> row)
         {
-            string sql = "INSERT INTO soldItem (Code, Description, Cashier, Invoice, Quantity, Amount, Profit, Date, Time) " +
-            "VALUES (@Code, @Description, @Cashier, @Invoice, @Amount, @Profit, @Date, @Time)";
+            bool state = false;
+            string sql = "INSERT INTO soldItems (Code, Description, Cashier, Invoice, Quantity, Amount, Profit, Date, Time) " +
+            "VALUES (@Code, @Description, @Cashier, @Invoice, @Quantity, @Amount, @Profit, @Date, @Time)";
             try
             {
                 this.conn.Open();
@@ -393,11 +392,14 @@ namespace PharmacyStore.Models
                 command.ExecuteNonQuery();
                 conn.Close();
                 MessageBox.Show("Inserted successfully");
+                state = true;
             }
             catch (SqliteException ex)
             {
                 MessageBox.Show(ex.ToString());
+                state = false;
             }
+            return state;
         }
         
         public string ReadInvoice()
@@ -414,7 +416,7 @@ namespace PharmacyStore.Models
                 {
                     while (reader.Read())
                     {
-                        inv = reader.GetString(reader.GetOrdinal("invoice"));
+                        inv = reader.GetString(reader.GetOrdinal("Invoice"));
                     }
                 }
                 conn.Close();
@@ -424,6 +426,22 @@ namespace PharmacyStore.Models
                 MessageBox.Show(ex.ToString());
             }
             return inv;
+        }
+
+        public void UpdateInvoice(string inv)
+        {
+            string sql = "UPDATE invoice SET Invoice = @Invoice WHERE id = 1";
+            try
+            {
+                conn.Open();
+                SqliteCommand command = new SqliteCommand(sql, conn);
+                command.Parameters.AddWithValue("Invoice", inv);
+                command.ExecuteNonQuery();
+            }
+            catch (SqliteException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

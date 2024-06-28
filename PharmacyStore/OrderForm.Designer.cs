@@ -36,7 +36,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.invoice_textBox = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.Search_pictureBox = new System.Windows.Forms.PictureBox();
@@ -65,6 +64,7 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.expirationDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invoice_label = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -88,24 +88,13 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.invoice_textBox);
+            this.groupBox1.Controls.Add(this.invoice_label);
             this.groupBox1.Location = new System.Drawing.Point(6, 15);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(173, 43);
+            this.groupBox1.Size = new System.Drawing.Size(119, 43);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "INVOICE";
-            // 
-            // invoice_textBox
-            // 
-            this.invoice_textBox.Enabled = false;
-            this.invoice_textBox.Location = new System.Drawing.Point(6, 17);
-            this.invoice_textBox.Name = "invoice_textBox";
-            this.invoice_textBox.ReadOnly = true;
-            this.invoice_textBox.Size = new System.Drawing.Size(100, 20);
-            this.invoice_textBox.TabIndex = 0;
-            this.invoice_textBox.Text = "10001";
-            this.invoice_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel4
             // 
@@ -476,6 +465,18 @@
             this.expirationDate.Name = "expirationDate";
             this.expirationDate.ReadOnly = true;
             // 
+            // invoice_label
+            // 
+            this.invoice_label.AutoSize = true;
+            this.invoice_label.BackColor = System.Drawing.Color.White;
+            this.invoice_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invoice_label.Location = new System.Drawing.Point(6, 17);
+            this.invoice_label.Name = "invoice_label";
+            this.invoice_label.Size = new System.Drawing.Size(64, 18);
+            this.invoice_label.TabIndex = 6;
+            this.invoice_label.Text = "1000001";
+            this.invoice_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -531,7 +532,6 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox Search_pictureBox;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox invoice_textBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Label label4;
@@ -543,5 +543,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn expirationDate;
         private System.Windows.Forms.Button Refresh_button;
+        private System.Windows.Forms.Label invoice_label;
     }
 }

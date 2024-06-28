@@ -19,10 +19,12 @@ namespace PharmacyStore
         double cash = 0.00;
         double transfer = 0.00;
         double total = 0.00;
+        string cashierName = "";
         DBConnection productDB = new DBConnection(new SqliteConnection("Data Source=ProductDB.db"));
-        public OrderForm()
+        public OrderForm(string _cashierName)
         {
             InitializeComponent();
+            cashierName = _cashierName;
         }
 
         private void Search_pictureBox_Click(object sender, EventArgs e)
@@ -58,7 +60,7 @@ namespace PharmacyStore
 
         private void cash_textBox_TextChanged(object sender, EventArgs e)
         {
-
+            change_textBox.Text = "0.00";
             total = double.Parse(Total_textBox.Text);
 
             if (cash_textBox.Text == string.Empty) cash = 0.00;
@@ -78,8 +80,8 @@ namespace PharmacyStore
         private void transfer_textBox_TextChanged(object sender, EventArgs e)
         {
 
-
-                total = double.Parse(Total_textBox.Text);
+            change_textBox.Text = "0.00";
+            total = double.Parse(Total_textBox.Text);
 
                 if (cash_textBox.Text == string.Empty) cash = 0.00;
                 else cash = double.Parse(cash_textBox.Text);
@@ -96,9 +98,13 @@ namespace PharmacyStore
 
         private void checkOut_button_Click(object sender, EventArgs e)
         {
+            if ((cash_textBox.Text == string.Empty) && (transfer_textBox.Text == string.Empty)) return;
 
-            Form form = new CheckOutForm(dataGridView, Total_textBox.Text, change_textBox.Text, invoice_textBox.Text);
+            if(float.Parse(cash_textBox.Text) == 0 && float.Parse(transfer_textBox.Text) == 0)return;
+            if(dataGridView.Rows.Count == 0) return;
+            Form form = new CheckOutForm(dataGridView, Total_textBox.Text, change_textBox.Text, invoice_label, cashierName);
             form.ShowDialog();
+
         }
 
         private void cancelOrder_button_Click(object sender, EventArgs e)
@@ -125,7 +131,7 @@ namespace PharmacyStore
             string inv = productDB.ReadInvoice();
             if (inv != null)
             {
-                invoice_textBox.Text = (int.Parse(inv)+1).ToString();
+                invoice_label.Text = (int.Parse(inv)+1).ToString();
             }
         }
     }

@@ -82,7 +82,7 @@ namespace PharmacyStore
 
         private void order_button_Click(object sender, EventArgs e)
         {
-            Form form = new OrderForm();
+            Form form = new OrderForm(_username);
             form.Show();
         }
     }
