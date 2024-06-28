@@ -36,7 +36,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.invoice_textBox = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.Search_pictureBox = new System.Windows.Forms.PictureBox();
@@ -85,11 +85,10 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(795, 94);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox6);
+            this.groupBox1.Controls.Add(this.invoice_textBox);
             this.groupBox1.Location = new System.Drawing.Point(6, 15);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(173, 43);
@@ -97,16 +96,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "INVOICE";
             // 
-            // textBox6
+            // invoice_textBox
             // 
-            this.textBox6.Enabled = false;
-            this.textBox6.Location = new System.Drawing.Point(6, 17);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 0;
-            this.textBox6.Text = "10001";
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.invoice_textBox.Enabled = false;
+            this.invoice_textBox.Location = new System.Drawing.Point(6, 17);
+            this.invoice_textBox.Name = "invoice_textBox";
+            this.invoice_textBox.ReadOnly = true;
+            this.invoice_textBox.Size = new System.Drawing.Size(100, 20);
+            this.invoice_textBox.TabIndex = 0;
+            this.invoice_textBox.Text = "10001";
+            this.invoice_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel4
             // 
@@ -493,6 +492,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OrderForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.OrderForm_Load);
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -531,7 +531,7 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox Search_pictureBox;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox invoice_textBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Label label4;

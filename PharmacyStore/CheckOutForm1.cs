@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using PharmacyStore.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,15 +14,18 @@ namespace PharmacyStore
 {
     public partial class CheckOutForm : Form
     {
+        DBConnection productDB = new DBConnection(new SqliteConnection("Data Source=ProductDB.db"));
         string total_received;
         string change;
+        string invoice;
         DataGridView _dataGridView;
-        public CheckOutForm(DataGridView dataGridView,string total_received, string change)
+        public CheckOutForm(DataGridView dataGridView,string total_received, string change, string inv)
         {
             InitializeComponent();
             this.total_received = total_received;
             this.change = change;
             _dataGridView = dataGridView;
+            invoice = inv;
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -37,9 +42,18 @@ namespace PharmacyStore
         private void save_pictureBox_Click(object sender, EventArgs e)
         {
             int rowCount = _dataGridView.Rows.Count;
-            for(int r = 0; r < rowCount; r++)
+            foreach(DataGridViewRow row in _dataGridView.Rows)
             {
-               
+               List<string> item = new List<string>();
+                
+                foreach(DataGridViewCell cell in row.Cells)
+                {
+                    item.Add(cell.Value.ToString());
+                }
+                int cost = int.Parse(productDB.LoadItem(item[0])[5]);
+                int qty = int.Parse(item[2]);
+                // To do
+                // calculate profit and store to db
             }
         }
     }

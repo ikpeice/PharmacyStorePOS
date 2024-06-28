@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using PharmacyStore.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,14 +19,10 @@ namespace PharmacyStore
         double cash = 0.00;
         double transfer = 0.00;
         double total = 0.00;
+        DBConnection productDB = new DBConnection(new SqliteConnection("Data Source=ProductDB.db"));
         public OrderForm()
         {
             InitializeComponent();
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void Search_pictureBox_Click(object sender, EventArgs e)
@@ -99,7 +97,7 @@ namespace PharmacyStore
         private void checkOut_button_Click(object sender, EventArgs e)
         {
 
-            Form form = new CheckOutForm(dataGridView, Total_textBox.Text, change_textBox.Text);
+            Form form = new CheckOutForm(dataGridView, Total_textBox.Text, change_textBox.Text, invoice_textBox.Text);
             form.ShowDialog();
         }
 
@@ -120,6 +118,15 @@ namespace PharmacyStore
                 }
             }
 
+        }
+
+        private void OrderForm_Load(object sender, EventArgs e)
+        {
+            string inv = productDB.ReadInvoice();
+            if (inv != null)
+            {
+                invoice_textBox.Text = (int.Parse(inv)+1).ToString();
+            }
         }
     }
 }

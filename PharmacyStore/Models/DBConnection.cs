@@ -375,7 +375,7 @@ namespace PharmacyStore.Models
 
         public void InserSoldItem(List<string> row)
         {
-            string sql = "INSERT INTO soldItem (Code, Description, Cashier, Invoice, Amount, Profit, Date, Time) " +
+            string sql = "INSERT INTO soldItem (Code, Description, Cashier, Invoice, Quantity, Amount, Profit, Date, Time) " +
             "VALUES (@Code, @Description, @Cashier, @Invoice, @Amount, @Profit, @Date, @Time)";
             try
             {
@@ -385,10 +385,11 @@ namespace PharmacyStore.Models
                 command.Parameters.AddWithValue("Description", row[1]);
                 command.Parameters.AddWithValue("Cashier", row[2]);
                 command.Parameters.AddWithValue("Invoice", row[3]);
-                command.Parameters.AddWithValue("Amount", row[4]);
-                command.Parameters.AddWithValue("Profit", row[5]);
-                command.Parameters.AddWithValue("Date", row[6]);
-                command.Parameters.AddWithValue("Time", row[7]);
+                command.Parameters.AddWithValue("Quantity", row[4]);
+                command.Parameters.AddWithValue("Amount", row[5]);
+                command.Parameters.AddWithValue("Profit", row[6]);
+                command.Parameters.AddWithValue("Date", row[7]);
+                command.Parameters.AddWithValue("Time", row[8]);
                 command.ExecuteNonQuery();
                 conn.Close();
                 MessageBox.Show("Inserted successfully");
@@ -397,6 +398,32 @@ namespace PharmacyStore.Models
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+        
+        public string ReadInvoice()
+        {
+            string inv = "";
+            string sql = "SELECT invoice FROM invoice WHERE id = 1";
+            try
+            {
+                conn.Open();
+                SqliteCommand command = new SqliteCommand(sql, conn);
+                command.ExecuteNonQuery();
+                SqliteDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        inv = reader.GetString(reader.GetOrdinal("invoice"));
+                    }
+                }
+                conn.Close();
+            }
+            catch(SqliteException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return inv;
         }
     }
 }
