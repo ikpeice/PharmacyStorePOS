@@ -443,5 +443,24 @@ namespace PharmacyStore.Models
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        public void UpdateQuantity(string description, string Quantity)
+        {
+            string sql = "UPDATE product SET Quantity = @Quantity WHERE Description = @Description";
+            try
+            {
+                conn.Open();
+                SqliteCommand command = new SqliteCommand(sql, conn);
+                command.Parameters.AddWithValue("Quantity", Quantity);
+                command.Parameters.AddWithValue("Description", description);
+                command.ExecuteNonQuery();
+            }
+            catch(SqliteException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+
+        }
     }
 }

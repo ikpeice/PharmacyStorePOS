@@ -274,6 +274,7 @@
             this.Scanner_checkBox.TabIndex = 16;
             this.Scanner_checkBox.Text = "Enable Scanner";
             this.Scanner_checkBox.UseVisualStyleBackColor = true;
+            this.Scanner_checkBox.CheckedChanged += new System.EventHandler(this.Scanner_checkBox_CheckedChanged);
             // 
             // AddItemForm
             // 

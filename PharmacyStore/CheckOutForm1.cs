@@ -65,7 +65,6 @@ namespace PharmacyStore
                 double soldPrice = double.Parse(row.Cells[3].Value.ToString()); 
                 int qty = int.Parse(row.Cells[2].Value.ToString());
                 double profit = (soldPrice - cost) * qty;
-                MessageBox.Show(profit.ToString());
 
                 soldItem.Add(row.Cells[0].Value.ToString()); // item code
                 soldItem.Add(row.Cells[1].Value.ToString()); // item description
@@ -78,6 +77,12 @@ namespace PharmacyStore
                 soldItem.Add(time);
 
                 state = productDB.InserSoldItem(soldItem);
+                if (state)
+                {
+                    int _qty = int.Parse(productDB.GetItemCell(row.Cells[1].Value.ToString(), "Quantity"));
+                    _qty -= qty;
+                    productDB.UpdateQuantity(row.Cells[1].Value.ToString(), _qty.ToString());
+                }
 
             }
             if (state)

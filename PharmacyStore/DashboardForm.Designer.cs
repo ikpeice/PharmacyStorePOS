@@ -136,7 +136,7 @@
             this.sales_button.Name = "sales_button";
             this.sales_button.Size = new System.Drawing.Size(90, 90);
             this.sales_button.TabIndex = 1;
-            this.sales_button.Text = "SALES";
+            this.sales_button.Text = "TODAY\'s SALES";
             this.sales_button.UseVisualStyleBackColor = false;
             this.sales_button.Click += new System.EventHandler(this.button1_Click);
             // 

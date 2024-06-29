@@ -76,5 +76,14 @@ namespace PharmacyStore
         {
             this.Close();
         }
+
+        private void Scanner_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if(Scanner_checkBox.Checked)
+            {
+                Form form = new BarcodeScannerForm();
+                form.ShowDialog();
+            }
+        }
     }
 }
