@@ -47,9 +47,9 @@ namespace PharmacyStore
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            QRCodeReader Reader = new QRCodeReader();
-            //BarcodeReader Reader = new BarcodeReader();
-            Result result = Reader.decode(pictureBox1.Image as );
+            //QRCodeReader Reader = new QRCodeReader();
+            BarcodeReader Reader = new BarcodeReader();
+            Result result = Reader.Decode(pictureBox1.Image as Bitmap);
             if (result != null)
                 result_TextBox.Text = result.ToString();
         }
