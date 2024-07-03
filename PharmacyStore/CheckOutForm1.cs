@@ -16,7 +16,7 @@ namespace PharmacyStore
 {
     public partial class CheckOutForm : Form
     {
-        DBConnection productDB = new DBConnection(new SqliteConnection("Data Source=ProductDB.db"));
+        DBConnection productDB = new DBConnection();
         private string total_received;
         private string change;
         private string cashierName="";

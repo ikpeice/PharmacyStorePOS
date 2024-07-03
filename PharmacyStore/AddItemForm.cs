@@ -14,7 +14,7 @@ namespace PharmacyStore
 {
     public partial class AddItemForm : Form
     {
-        DBConnection productDB = new DBConnection(new SqliteConnection("Data Source=ProductDB.db"));
+        DBConnection productDB = new DBConnection();
         DataGridView _dataGridView;
         Label _label;
         public AddItemForm(DataGridView dataGridView, Label label)

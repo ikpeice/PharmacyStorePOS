@@ -16,7 +16,7 @@ namespace PharmacyStore
 {
     public partial class StockForm : Form
     {
-        DBConnection productDB = new DBConnection(new SqliteConnection("Data Source=ProductDB.db"));
+        DBConnection productDB = new DBConnection();
         Helper _helper = new Helper();   
         string _username;
         bool _privilege;

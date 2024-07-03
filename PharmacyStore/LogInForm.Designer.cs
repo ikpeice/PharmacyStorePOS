@@ -203,6 +203,7 @@
             this.Name = "LogInForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "[Log-In] InDrugs Pharmacy Store";
+            this.Load += new System.EventHandler(this.LogInForm_Load);
             this.VisibleChanged += new System.EventHandler(this.OnVisibleChanged);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

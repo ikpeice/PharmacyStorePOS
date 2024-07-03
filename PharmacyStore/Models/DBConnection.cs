@@ -2,52 +2,55 @@
 using Microsoft.Data.Sqlite;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.IO;
 
 namespace PharmacyStore.Models
 {
     internal class DBConnection
     {
-        SqliteConnection conn;
+        SqliteConnection conn = new SqliteConnection("Data Source=db/ProductDB.db");
         ~DBConnection() {
         
-        }
-        public DBConnection(SqliteConnection _conn) 
+        }   
+        readonly string DBsource = "Data Source=db/ProductDB.db";
+        public DBConnection() 
         {
-            this.conn = _conn;
-        }
-        public void Connect()
-        {
-            try
+            if (!Directory.Exists("db/"))
             {
-                this.conn.Open();
-                MessageBox.Show("Connection successful");
-                conn.Close();
+                Directory.CreateDirectory("db/");
             }
-            catch(SqliteException ex) {
-                MessageBox.Show(ex.ToString());
             
-            }
+        }
+        public string Source
+        {
+            get { return DBsource; }
         }
 
-        public void CreateUserTable()
+        public void CreateTables()
         {
-            string sql = "CREATE TABLE UserTable(" +
-                "id INTEGER PRIMARY KEY," +
-                "username TEXT NOT NULL," +
-                "password TEXT NOT NULL)";
-            try
-            {
-                this.conn.Open();
-                var command = new SqliteCommand(sql, conn);
-                command.ExecuteNonQuery();
-                conn.Close();
-                MessageBox.Show("User Table Created");
-            }
-            catch (SqliteException ex)
-            {
-                MessageBox.Show(ex.ToString());
+            List<string> tables = new List<string>();
+            tables.Add("CREATE TABLE IF NOT EXISTS invoice (id INTEGER NOT NULL, Invoice INTEGER NOT NULL, PRIMARY KEY(id))");
 
+            tables.Add("CREATE TABLE IF NOT EXISTS product (id INTEGER NOT NULL, Code INTEGER NOT NULL, Description TEXT NOT NULL, Category TEXT NOT NULL, Quantity INTEGER NOT NULL, CostPrice INTEGER NOT NULL, SellingPrice INTEGER NOT NULL, Company TEXT, ExpirationDate TEXT, PRIMARY KEY( id AUTOINCREMENT) )");
+            tables.Add("CREATE TABLE IF NOT EXISTS \"soldItems\" (\r\n\t\"id\"\tINTEGER NOT NULL,\r\n\t\"Code\"\tTEXT NOT NULL,\r\n\t\"Description\"\tTEXT NOT NULL,\r\n\t\"Cashier\"\tTEXT NOT NULL,\r\n\t\"Invoice\"\tINTEGER NOT NULL,\r\n\t\"Quantity\"\tINTEGER NOT NULL,\r\n\t\"Amount\"\tNUMERIC NOT NULL,\r\n\t\"Profit\"\tNUMERIC NOT NULL,\r\n\t\"Date\"\tTEXT NOT NULL,\r\n\t\"Time\"\tTEXT NOT NULL,\r\n\tPRIMARY KEY(\"id\")\r\n)");
+            tables.Add("CREATE TABLE IF NOT EXISTS \"staff\" (\r\n\t\"id\"\tINTEGER NOT NULL,\r\n\t\"fullName\"\tTEXT NOT NULL,\r\n\t\"username\"\tTEXT NOT NULL,\r\n\t\"password\"\tTEXT NOT NULL,\r\n\t\"admin\"\tINTEGER NOT NULL,\r\n\t\"phone\"\tINTEGER,\r\n\t\"email\"\tTEXT,\r\n\tPRIMARY KEY(\"id\")\r\n)");
+            foreach(string table in tables)
+            {
+                try
+                {
+                    this.conn.Open();
+                    var command = new SqliteCommand(table, conn);
+                    command.ExecuteNonQuery();
+                    conn.Close();
+                    
+                }
+                catch (SqliteException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+
+                }
             }
+
         }
         public void RegisterUser(string username, string password)
         {

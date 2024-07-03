@@ -20,7 +20,7 @@ namespace PharmacyStore
         double transfer = 0.00;
         double total = 0.00;
         string cashierName = "";
-        DBConnection productDB = new DBConnection(new SqliteConnection("Data Source=ProductDB.db"));
+        DBConnection productDB = new DBConnection();
         public OrderForm(string _cashierName)
         {
             InitializeComponent();

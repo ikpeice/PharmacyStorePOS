@@ -15,7 +15,7 @@ namespace PharmacyStore
     public partial class UpdateItemForm : Form
     {
         List<string> itemData;
-        DBConnection productDB = new DBConnection(new SqliteConnection("Data Source=ProductDB.db"));
+        DBConnection productDB = new DBConnection();
         public UpdateItemForm(List<string> ItemData)
         {
             InitializeComponent();
