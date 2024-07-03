@@ -69,11 +69,6 @@ namespace PharmacyStore
             label2.Text = dt.GetDateTimeFormats()[11];
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void stock_button_Click(object sender, EventArgs e)
         {
             Form form = new StockForm(_username, _adminPrivilege);
@@ -84,6 +79,12 @@ namespace PharmacyStore
         {
             Form form = new OrderForm(_username);
             form.Show();
+        }
+
+        private void sales_button_Click(object sender, EventArgs e)
+        {
+            Form form = new TodaySalse(_adminPrivilege);
+            form.ShowDialog();
         }
     }
 }

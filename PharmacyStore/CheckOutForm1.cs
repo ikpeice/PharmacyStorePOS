@@ -73,6 +73,7 @@ namespace PharmacyStore
                 soldItem.Add(row.Cells[2].Value.ToString()); // Qty
                 soldItem.Add(row.Cells[3].Value.ToString()); // Amount
                 soldItem.Add(profit.ToString());
+                soldItem.Add((soldPrice*qty).ToString()); // total
                 soldItem.Add(date);
                 soldItem.Add(time);
 

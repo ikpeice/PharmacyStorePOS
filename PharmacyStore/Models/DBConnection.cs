@@ -8,11 +8,13 @@ namespace PharmacyStore.Models
 {
     internal class DBConnection
     {
-        SqliteConnection conn = new SqliteConnection("Data Source=db/ProductDB.db");
+        private static string DBsource = "Data Source=db/ProductDB.db";
+
+        SqliteConnection conn = new SqliteConnection(DBsource);
         ~DBConnection() {
         
         }   
-        readonly string DBsource = "Data Source=db/ProductDB.db";
+        
         public DBConnection() 
         {
             if (!Directory.Exists("db/"))
@@ -52,16 +54,21 @@ namespace PharmacyStore.Models
             }
 
         }
-        public void RegisterUser(string username, string password)
+        public void RegisterUser(string fullname,string username, string password,string admin, string phone, string email)
         {
-            string sql = "INSERT INTO UserTable (userName, password) " +
-                "VALUES (@username, @password)";
+            string sql = "INSERT INTO staff (fullname, userName, password, admin, phone, email) " +
+                "VALUES (@fullname, @userName, @password, @admin, @phone, @email)";
             try
             {
                 this.conn.Open();
                 var command = new SqliteCommand(sql, conn);
-                command.Parameters.AddWithValue("username",username); 
+                command.Parameters.AddWithValue("fullname", fullname);
+                command.Parameters.AddWithValue("username", username);
                 command.Parameters.AddWithValue("password", password);
+                command.Parameters.AddWithValue("admin", admin);
+                command.Parameters.AddWithValue("phone", phone);
+                command.Parameters.AddWithValue("email", email);
+
                 command.ExecuteNonQuery();
                 conn.Close();
                 MessageBox.Show("Inserted successfully");
@@ -403,6 +410,41 @@ namespace PharmacyStore.Models
                 state = false;
             }
             return state;
+        }
+
+        public void GetTodaySoldItems(DataGridView dataGridView,string date)
+        {
+            string sql = "SELECT * FROM soldItems WHERE Date = @date";
+            try
+            {
+                conn.Open();
+                SqliteCommand command = new SqliteCommand(sql, conn);
+                command.Parameters.AddWithValue("date", date);
+                command.ExecuteNonQuery();
+                SqliteDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        dataGridView.Rows.Add(new object[]
+                        {
+                            reader.GetString(reader.GetOrdinal("Code")),
+                            reader.GetString(reader.GetOrdinal("Description")),
+                            reader.GetString(reader.GetOrdinal("Invoice")),
+                            reader.GetString(reader.GetOrdinal("Quantity")),
+                            reader.GetString(reader.GetOrdinal("Amount")),
+                            "0.00",
+                            reader.GetString(reader.GetOrdinal("Profit")),
+                            reader.GetString(reader.GetOrdinal("Total")),
+                        });
+                    }
+                }
+                conn.Close();
+            }
+            catch(SqliteException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
         
         public string ReadInvoice()

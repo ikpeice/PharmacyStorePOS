@@ -64,7 +64,10 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
@@ -421,6 +424,12 @@
     <Compile Include="StockForm.Designer.cs">
       <DependentUpon>StockForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TodaySalse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TodaySalse.Designer.cs">
+      <DependentUpon>TodaySalse.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -460,6 +469,9 @@
     </Compile>
     <EmbeddedResource Include="StockForm.resx">
       <DependentUpon>StockForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TodaySalse.resx">
+      <DependentUpon>TodaySalse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateItemForm.resx">
       <DependentUpon>UpdateItemForm.cs</DependentUpon>

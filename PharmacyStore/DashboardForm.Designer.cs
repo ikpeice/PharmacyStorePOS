@@ -60,7 +60,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(833, 83);
+            this.panel1.Size = new System.Drawing.Size(741, 83);
             this.panel1.TabIndex = 0;
             // 
             // label3
@@ -79,7 +79,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(386, 33);
+            this.label2.Location = new System.Drawing.Point(340, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 20);
             this.label2.TabIndex = 5;
@@ -94,7 +94,7 @@
             this.logOut_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logOut_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logOut_Button.ForeColor = System.Drawing.SystemColors.Control;
-            this.logOut_Button.Location = new System.Drawing.Point(667, 21);
+            this.logOut_Button.Location = new System.Drawing.Point(575, 21);
             this.logOut_Button.Name = "logOut_Button";
             this.logOut_Button.Size = new System.Drawing.Size(137, 47);
             this.logOut_Button.TabIndex = 4;
@@ -131,14 +131,14 @@
             this.sales_button.FlatAppearance.BorderSize = 0;
             this.sales_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.sales_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sales_button.Location = new System.Drawing.Point(88, 46);
+            this.sales_button.Location = new System.Drawing.Point(42, 82);
             this.sales_button.MaximumSize = new System.Drawing.Size(90, 90);
             this.sales_button.Name = "sales_button";
             this.sales_button.Size = new System.Drawing.Size(90, 90);
             this.sales_button.TabIndex = 1;
             this.sales_button.Text = "TODAY\'s SALES";
             this.sales_button.UseVisualStyleBackColor = false;
-            this.sales_button.Click += new System.EventHandler(this.button1_Click);
+            this.sales_button.Click += new System.EventHandler(this.sales_button_Click);
             // 
             // order_button
             // 
@@ -146,7 +146,7 @@
             this.order_button.BackColor = System.Drawing.Color.CornflowerBlue;
             this.order_button.FlatAppearance.BorderSize = 0;
             this.order_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.order_button.Location = new System.Drawing.Point(202, 46);
+            this.order_button.Location = new System.Drawing.Point(156, 82);
             this.order_button.MaximumSize = new System.Drawing.Size(90, 90);
             this.order_button.Name = "order_button";
             this.order_button.Size = new System.Drawing.Size(90, 90);
@@ -162,7 +162,7 @@
             this.report_button.BackColor = System.Drawing.Color.CornflowerBlue;
             this.report_button.FlatAppearance.BorderSize = 0;
             this.report_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.report_button.Location = new System.Drawing.Point(88, 160);
+            this.report_button.Location = new System.Drawing.Point(42, 196);
             this.report_button.MaximumSize = new System.Drawing.Size(90, 90);
             this.report_button.Name = "report_button";
             this.report_button.Size = new System.Drawing.Size(90, 90);
@@ -176,7 +176,7 @@
             this.addItem_button.BackColor = System.Drawing.Color.CornflowerBlue;
             this.addItem_button.FlatAppearance.BorderSize = 0;
             this.addItem_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addItem_button.Location = new System.Drawing.Point(202, 160);
+            this.addItem_button.Location = new System.Drawing.Point(156, 196);
             this.addItem_button.MaximumSize = new System.Drawing.Size(90, 90);
             this.addItem_button.Name = "addItem_button";
             this.addItem_button.Size = new System.Drawing.Size(90, 90);
@@ -198,7 +198,7 @@
             this.panel2.Controls.Add(this.report_button);
             this.panel2.Location = new System.Drawing.Point(186, 89);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(488, 363);
+            this.panel2.Size = new System.Drawing.Size(396, 434);
             this.panel2.TabIndex = 5;
             // 
             // employe_button
@@ -207,12 +207,12 @@
             this.employe_button.BackColor = System.Drawing.Color.CornflowerBlue;
             this.employe_button.FlatAppearance.BorderSize = 0;
             this.employe_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.employe_button.Location = new System.Drawing.Point(315, 160);
+            this.employe_button.Location = new System.Drawing.Point(269, 196);
             this.employe_button.MaximumSize = new System.Drawing.Size(90, 90);
             this.employe_button.Name = "employe_button";
             this.employe_button.Size = new System.Drawing.Size(90, 90);
             this.employe_button.TabIndex = 6;
-            this.employe_button.Text = "STAFF";
+            this.employe_button.Text = "REGISTER";
             this.employe_button.UseVisualStyleBackColor = false;
             // 
             // stock_button
@@ -221,7 +221,7 @@
             this.stock_button.BackColor = System.Drawing.Color.CornflowerBlue;
             this.stock_button.FlatAppearance.BorderSize = 0;
             this.stock_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stock_button.Location = new System.Drawing.Point(315, 46);
+            this.stock_button.Location = new System.Drawing.Point(269, 82);
             this.stock_button.MaximumSize = new System.Drawing.Size(90, 90);
             this.stock_button.Name = "stock_button";
             this.stock_button.Size = new System.Drawing.Size(90, 90);
@@ -243,14 +243,14 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = global::PharmacyStore.Properties.Resources.pexels_pixelcop_3970396;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(833, 455);
+            this.ClientSize = new System.Drawing.Size(741, 526);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(757, 565);
             this.Name = "DashboardForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "[Name] Dashboard";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OnFormClosed);
             this.Load += new System.EventHandler(this.OnLoad);
             this.panel1.ResumeLayout(false);
