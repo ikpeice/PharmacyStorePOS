@@ -9,7 +9,7 @@ namespace PharmacyStore.Models
 {
     internal class DBConnection
     {
-        private static string DBsource = "Data Source=db/ProductDB.db";
+        private static string DBsource = "Data Source=H:/Other computers/My Laptop (1)/db/ProductDB.db";// Data Source=db/ProductDB.db";
 
         SqliteConnection conn = new SqliteConnection(DBsource);
         ~DBConnection() {
@@ -405,8 +405,8 @@ namespace PharmacyStore.Models
         public bool InserSoldItem(List<string> row)
         {
             bool state = false;
-            string sql = "INSERT INTO soldItems (Code, Description, Cashier, Invoice, Quantity, Amount, Profit, Date, Time) " +
-            "VALUES (@Code, @Description, @Cashier, @Invoice, @Quantity, @Amount, @Profit, @Date, @Time)";
+            string sql = "INSERT INTO soldItems (Code, Description, Cashier, Invoice, Quantity, Amount, Profit, Total, Date, Time) " +
+            "VALUES (@Code, @Description, @Cashier, @Invoice, @Quantity, @Amount, @Profit, @Total, @Date, @Time)";
             try
             {
                 this.conn.Open();
@@ -418,8 +418,9 @@ namespace PharmacyStore.Models
                 command.Parameters.AddWithValue("Quantity", row[4]);
                 command.Parameters.AddWithValue("Amount", row[5]);
                 command.Parameters.AddWithValue("Profit", row[6]);
-                command.Parameters.AddWithValue("Date", row[7]);
-                command.Parameters.AddWithValue("Time", row[8]);
+                command.Parameters.AddWithValue("Total", row[7]);
+                command.Parameters.AddWithValue("Date", row[8]);
+                command.Parameters.AddWithValue("Time", row[9]);
                 command.ExecuteNonQuery();
                 conn.Close();
                 MessageBox.Show("Inserted successfully");
