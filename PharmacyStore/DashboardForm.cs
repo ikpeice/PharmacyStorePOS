@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using PharmacyStore.Models;
 
 namespace PharmacyStore
 {
@@ -32,6 +33,13 @@ namespace PharmacyStore
         {
             prev.Visible = true;
             _adminPrivilege = false;
+            SqlDateTime sqlDateTime = new SqlDateTime(DateTime.Now);
+
+            string dateTime = sqlDateTime.ToSqlString().Value;
+            string date = dateTime.Substring(0, dateTime.IndexOf(' '));
+            string time = dateTime.Substring(dateTime.IndexOf(" ") + 1);
+            DBConnection DB = new DBConnection();
+            DB.Attendance(_username, "OUT", date, time);
         }
 
         private void OnLoad(object sender, EventArgs e)
@@ -50,6 +58,13 @@ namespace PharmacyStore
                 report_button.Enabled = false;
                 employe_button.Enabled = false;
             }
+            SqlDateTime sqlDateTime = new SqlDateTime(DateTime.Now);
+
+            string dateTime = sqlDateTime.ToSqlString().Value;
+            string date = dateTime.Substring(0, dateTime.IndexOf(' '));
+            string time = dateTime.Substring(dateTime.IndexOf(" ") + 1);
+            DBConnection DB = new DBConnection();
+            DB.Attendance(_username, "IN", date, time);
         }
 
         private void button4_Click(object sender, EventArgs e)

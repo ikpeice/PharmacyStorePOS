@@ -29,8 +29,6 @@ namespace PharmacyStore
 
         private void LogInButton_Click(object sender, EventArgs e)
         {
-            //DB.Connect();
-            //DB.RegisterUser("ikpe", "onlyice");
             _username = textBox1.Text;
             string password = textBox2.Text;
             switch (checkBox1.Checked)
@@ -38,7 +36,6 @@ namespace PharmacyStore
                 case true:
                     if (staffDB.CheckPassword(_username, password, true))
                     {
-                        //MessageBox.Show("Successful Login");
                         _adminPrivilege = true;
                         this.Visible = false;
                         Form dashboard = new DashboardForm(this, _username, _adminPrivilege);
